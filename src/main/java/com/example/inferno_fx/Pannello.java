@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Pannello extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         stage.setTitle("FireNews24");
         stage.getIcons().add(new Image(this.getClass().getResource("Template.jpeg").toString()));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
