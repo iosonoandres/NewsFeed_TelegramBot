@@ -2,18 +2,28 @@ package com.example.inferno_fx;
 
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Controller {
 
+    @FXML
+    private PasswordField passwordBox;
+    @FXML
+    private TextField usernameBox;
+    @FXML
+    private Text inputSbagliato;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -24,20 +34,22 @@ public class Controller {
         datiAdmin.aggiungiAdmin("@Massimomanonpericolo");
         datiAdmin.aggiungiAdmin("@Francibo");
         datiAdmin.setPassword("123ADMIN");
+        String inputPassword = passwordBox.getText();
+        String inputUsername = usernameBox.getText();
 
-        //if(//se username e password sono corretti) {
+        if(datiAdmin.getListaAdmin().contains(inputUsername) && datiAdmin.getPassword().equals(inputPassword)) {
             Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-        //}
-        /*else{
-            if(!(datiAdmin.getListaAdmin()).contains(usernameBox.getText())){
-                appare il testo "utente admin non riconosciuto"
-            else{
-                  appare il testo "password errato"
+        }
+        else{
+            if(!(datiAdmin.getListaAdmin()).contains(usernameBox.getText())) {
+                inputSbagliato.setText("Utente non riconosciuto");
+            }else{
+                inputSbagliato.setText("password errato");
             }
-        }*/
+        }
     }
     public void switchToAutenticazioneAdmin(ActionEvent event) throws IOException {
         //pop-up di allarme, chiede se sei sicuro di voler fare il logout

@@ -41,5 +41,10 @@
             <Font name="Consolas" size="30.0" />
          </font>
       </Label>
+      <Text fx:id="inputSbagliato" fill="#eb0808" layoutX="313.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
