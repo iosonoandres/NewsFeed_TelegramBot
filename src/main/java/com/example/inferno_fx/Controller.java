@@ -24,6 +24,11 @@ public class Controller {
     private TextField usernameBox;
     @FXML
     private Text inputSbagliato;
+    @FXML
+    private Text asteriscoUsername;
+    @FXML
+    private Text asteriscoPassword;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -42,12 +47,19 @@ public class Controller {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-        }
-        else{
+        } else if (inputUsername.equals("")||inputPassword.equals("")) {
+            inputSbagliato.setText("Completare tutti i campi");
+            asteriscoPassword.setText("*");
+            asteriscoUsername.setText("*");
+        } else{
             if(!(datiAdmin.getListaAdmin()).contains(usernameBox.getText())) {
                 inputSbagliato.setText("Utente non riconosciuto");
+                asteriscoPassword.setText("");
+                asteriscoUsername.setText("*");
             }else{
                 inputSbagliato.setText("password errato");
+                asteriscoUsername.setText("");
+                asteriscoPassword.setText("*");
             }
         }
     }
