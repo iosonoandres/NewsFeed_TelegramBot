@@ -1,22 +1,28 @@
 package com.example.inferno_fx;
 
 
+import com.example.inferno_fx.MapSample.MapSample;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.TreeMap;
 
-public class Controller {
+
+public class Controller implements Initializable {
 
     @FXML
     private PasswordField passwordBox;
@@ -28,6 +34,8 @@ public class Controller {
     private Text asteriscoUsername;
     @FXML
     private Text asteriscoPassword;
+    @FXML
+    private ListView<String> myListView;
 
     private Stage stage;
     private Scene scene;
@@ -76,5 +84,18 @@ public class Controller {
             scene = new Scene(root);
             stage.setScene(scene);
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TreeMap<String, ArrayList<String>> mappa = new TreeMap<>();
+        ArrayList<String> URLSport = new ArrayList<>();
+        URLSport.add("https://www.gazzetta.it/rss/home.xml");
+        URLSport.add("https://www.ansa.it/sito/notizie/sport/sport_rss.xml");
+
+        mappa.put("SPORT",URLSport);
+
+        myListView = new ListView<>();
+        myListView.getItems().addAll(mappa.keySet());
     }
 }
