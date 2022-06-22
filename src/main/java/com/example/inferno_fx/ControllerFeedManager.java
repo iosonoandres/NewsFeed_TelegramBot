@@ -45,5 +45,7 @@ public class ControllerFeedManager implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TreeItem<String> rootItem = new TreeItem<>("Categorie");
         myTree.setRoot(rootItem);
+        TreeItem<String> branchItem = new TreeItem<>("SPORT");
+        rootItem.getChildren().add(branchItem);
     }
 }
