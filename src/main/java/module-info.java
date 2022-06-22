@@ -13,6 +13,4 @@ module com.example.inferno_fx {
 
     opens com.example.inferno_fx to javafx.fxml;
     exports com.example.inferno_fx;
-    exports com.example.inferno_fx.MapSample;
-    opens com.example.inferno_fx.MapSample to javafx.fxml;
 }
