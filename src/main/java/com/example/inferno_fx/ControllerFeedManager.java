@@ -47,7 +47,7 @@ public class ControllerFeedManager implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TreeItem<String> rootItem = new TreeItem<>("Categorie");
         myTree.setRoot(rootItem);
-        MappaCategorie mappaCategorie = new MappaCategorie("Output.json");
+        MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
             rootItem.getChildren().add(new TreeItem<>(nomeCategoria));
         }
