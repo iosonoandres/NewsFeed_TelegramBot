@@ -1,5 +1,7 @@
 package com.example.inferno_fx;
 
+import com.example.inferno_fx.OperazioniJSON.Categoria;
+import com.example.inferno_fx.OperazioniJSON.MappaCategorie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +47,9 @@ public class ControllerFeedManager implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TreeItem<String> rootItem = new TreeItem<>("Categorie");
         myTree.setRoot(rootItem);
-        TreeItem<String> branchItem = new TreeItem<>("SPORT");
-        rootItem.getChildren().add(branchItem);
+        MappaCategorie mappaCategorie = new MappaCategorie("Output.json");
+        for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
+            rootItem.getChildren().add(new TreeItem<>(nomeCategoria));
+        }
     }
 }

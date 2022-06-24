@@ -10,7 +10,9 @@ module com.example.inferno_fx {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires com.google.gson;
 
     opens com.example.inferno_fx to javafx.fxml;
+    opens com.example.inferno_fx.OperazioniJSON to com.google.gson;
     exports com.example.inferno_fx;
 }
