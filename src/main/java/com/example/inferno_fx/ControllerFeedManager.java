@@ -49,7 +49,12 @@ public class ControllerFeedManager implements Initializable{
         myTree.setRoot(rootItem);
         MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
-            rootItem.getChildren().add(new TreeItem<>(nomeCategoria));
+            TreeItem thisCategoria = new TreeItem(nomeCategoria);
+            rootItem.getChildren().add(thisCategoria);
+            for(String link:mappaCategorie.getMappa().get(nomeCategoria)){
+                TreeItem thisLink = new TreeItem(link);
+                thisCategoria.getChildren().add(thisLink);
+            }
         }
     }
 }
