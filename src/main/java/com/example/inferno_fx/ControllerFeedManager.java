@@ -13,6 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +28,10 @@ public class ControllerFeedManager implements Initializable{
 
     @FXML
     private TreeView myTree;
+
+    Image categorieBox = new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, false);
+    Image folderImage = new Image(getClass().getResourceAsStream("folder.png"), 15, 15, false, false);
+    Image urlImage = new Image(getClass().getResourceAsStream("url.png"), 14, 14, false, false);
 
     public void switchToAutenticazioneAdmin(ActionEvent event) throws IOException {
         //pop-up di allarme, chiede se sei sicuro di voler fare il logout
@@ -42,19 +48,31 @@ public class ControllerFeedManager implements Initializable{
         }
     }
 
-
+    //questo initializie serve per inizializzare la TreeView, altrimenti lo lascia vuoto
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TreeItem<String> rootItem = new TreeItem<>("Categorie");
+
+        //inizializzo le imageview e modifico la grandezza
+        ImageView categorieImageView = new ImageView(categorieBox);
+
+
+
+        TreeItem<String> rootItem = new TreeItem<>("Categorie",categorieImageView);
         myTree.setRoot(rootItem);
         MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
-            TreeItem thisCategoria = new TreeItem(nomeCategoria);
+
+            TreeItem thisCategoria = new TreeItem(nomeCategoria, new ImageView(folderImage));
             rootItem.getChildren().add(thisCategoria);
             for(String link:mappaCategorie.getMappa().get(nomeCategoria)){
-                TreeItem thisLink = new TreeItem(link);
+                TreeItem thisLink = new TreeItem(link, new ImageView(urlImage));
                 thisCategoria.getChildren().add(thisLink);
             }
         }
+    }
+
+
+    public void onCliccaDestra(){
+        System.out.println("hai cliccato destra");
     }
 }
