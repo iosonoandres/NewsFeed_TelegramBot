@@ -14,6 +14,12 @@ public class Pannello extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
         Scene scene = new Scene(root);
+
+        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        String css = this.getClass().getResource("application.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
+
         stage.setTitle("FireNews24");
         stage.getIcons().add(new Image(this.getClass().getResource("Template.jpeg").toString()));
         stage.setScene(scene);

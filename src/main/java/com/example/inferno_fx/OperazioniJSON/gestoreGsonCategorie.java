@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class gestoreGsonCategorie {
 
     public Categoria readJSON(String percorso) {
-
+    //commento
         try{
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
