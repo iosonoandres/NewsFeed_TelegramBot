@@ -50,6 +50,9 @@ public class ControllerAdmin{
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);
+
         } else if (inputUsername.equals("")||inputPassword.equals("")) {
             inputSbagliato.setText("Completare tutti i campi");
             asteriscoPassword.setText("*");

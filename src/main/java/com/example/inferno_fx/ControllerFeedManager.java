@@ -45,6 +45,9 @@ public class ControllerFeedManager implements Initializable{
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);
+
         }
     }
 
@@ -53,11 +56,10 @@ public class ControllerFeedManager implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //inizializzo le imageview e modifico la grandezza
-        ImageView categorieImageView = new ImageView(categorieBox);
 
 
 
-        TreeItem<String> rootItem = new TreeItem<>("Categorie",categorieImageView);
+        TreeItem<String> rootItem = new TreeItem<>("Categorie",new ImageView(categorieBox));
         myTree.setRoot(rootItem);
         MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){

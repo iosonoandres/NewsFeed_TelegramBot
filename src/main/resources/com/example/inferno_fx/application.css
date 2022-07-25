@@ -1,10 +1,7 @@
 .root{
-    -fx-background-image: url("burningNewspaper.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-size: 800 406;
-    -fx-background-position: center center;
-
+    -fx-background-color: #082032;
 }
+
 
 .label{
     -fx-font-family: Consolas;
@@ -12,5 +9,34 @@
 }
 #copyright{
     -fx-font-family: Consolas;
+    -fx-text-fill: #d96261;
+}
+
+.text-field{
+    -fx-background-color: #cbe3e4;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-font-family: Consolas;
+
+}
+
+.text-field:hover{
+    -fx-background-color: #97d2d4;
+}
+
+.button{
+    -fx-background-color: #f8c487;
+}
+
+.button:hover{
+    -fx-background-color: #97d2d4;
+}
+
+.button:pressed{
+    -fx-background-color: #f8c487;
+}
+
+.tree-view{
+    -fx-background-color: #082032;
     -fx-text-fill: white;
 }
