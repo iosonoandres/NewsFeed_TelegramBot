@@ -77,4 +77,5 @@ public class ControllerFeedManager implements Initializable{
     public void onCliccaDestra(){
         System.out.println("hai cliccato destra");
     }
+    //commento per push
 }
