@@ -25,18 +25,40 @@
 }
 
 .button{
-    -fx-background-color: #f8c487;
+    -fx-background-color: #FF5347;
+
 }
 
 .button:hover{
-    -fx-background-color: #97d2d4;
+    -fx-background-color: #FF7347;
 }
 
 .button:pressed{
-    -fx-background-color: #f8c487;
+    -fx-background-color: #FF9347;
 }
 
-.tree-view{
+
+#myTree{
     -fx-background-color: #082032;
     -fx-text-fill: white;
 }
+
+.menu-item{
+    -fx-text-fill: black;
+}
+
+.choice-box {
+       -fx-background-color: black;
+       -fx-mark-color: orange;
+}
+
+   .choice-box > .label {
+       -fx-text-fill: black;
+        -fx-background-color: #cbe3e4;
+   }
+   #scegliPagina{
+       -fx-background-color: #B0E0E6;
+   }
+   #currentButton{
+       -fx-background-color: #990000;
+   }

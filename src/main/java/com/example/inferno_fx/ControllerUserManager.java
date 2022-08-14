@@ -1,6 +1,5 @@
 package com.example.inferno_fx;
 
-import com.example.inferno_fx.OperazioniJSON.Categoria;
 import com.example.inferno_fx.OperazioniJSON.MappaCategorie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,15 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerFeedManager implements Initializable{
+public class ControllerUserManager implements Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -59,14 +56,18 @@ public class ControllerFeedManager implements Initializable{
         }
     }
 
-    public void switchToUserManager(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
+    public void switchToFeedManager(ActionEvent event) throws IOException {
+        //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+        Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         String css = this.getClass().getResource("application.css").toExternalForm();
         scene.getStylesheets().add(css);
     }
+
+
+
 
     //questo initializie serve per inizializzare la TreeView, altrimenti lo lascia vuoto
     @Override
