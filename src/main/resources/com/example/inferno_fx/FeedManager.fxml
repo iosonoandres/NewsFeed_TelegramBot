@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerFeedManager">
    <children>
       <Button layoutX="371.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToAutenticazioneAdmin" text="Log Out" />
-      <TreeView fx:id="myTree" layoutX="275.0" layoutY="88.0" prefHeight="310.0" prefWidth="318.0" />
+      <TreeView fx:id="myTree" editable="true" layoutX="275.0" layoutY="88.0" prefHeight="310.0" prefWidth="318.0" />
       <VBox fx:id="scegliPagina" prefHeight="408.0" prefWidth="167.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="206.0" text="Naviga">

@@ -96,6 +96,7 @@ public class ControllerFeedManager implements Initializable{
 
         TreeItem<String> rootItem = new TreeItem<>("Categorie",new ImageView(categorieBox));
         myTree.setRoot(rootItem);
+        rootItem.setExpanded(true);
         MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
 
@@ -108,13 +109,14 @@ public class ControllerFeedManager implements Initializable{
 
                             myContext.show(thisLink.getGraphic(), e.getScreenX(), e.getScreenY());
                             e.consume();
-                        });
+                });
 
 
 
                 thisCategoria.getChildren().add(thisLink);
             }
         }
+
         this.myTree.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     }
 
