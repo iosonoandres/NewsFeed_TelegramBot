@@ -26,7 +26,6 @@
 
 .button{
     -fx-background-color: #FF5347;
-
 }
 
 .button:hover{
@@ -52,13 +51,22 @@
        -fx-mark-color: orange;
 }
 
-   .choice-box > .label {
+.choice-box > .label {
        -fx-text-fill: black;
         -fx-background-color: #cbe3e4;
-   }
-   #scegliPagina{
+}
+
+#scegliPagina{
        -fx-background-color: #B0E0E6;
-   }
-   #currentButton{
+}
+
+#currentButton{
        -fx-background-color: #990000;
-   }
+}
+
+#floppyDisk:pressed{
+    -fx-opacity: 0.7;
+}
+
+
+

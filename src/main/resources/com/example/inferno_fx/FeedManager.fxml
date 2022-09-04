@@ -3,13 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerFeedManager">
    <children>
-      <Button layoutX="371.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToAutenticazioneAdmin" text="Log Out" />
+      <Button layoutX="480.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToAutenticazioneAdmin" text="Log Out" />
       <TreeView fx:id="myTree" editable="true" layoutX="275.0" layoutY="88.0" prefHeight="310.0" prefWidth="318.0" />
       <VBox fx:id="scegliPagina" prefHeight="408.0" prefWidth="167.0">
          <children>
@@ -18,17 +20,22 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button fx:id="currentButton" mnemonicParsing="false" prefHeight="53.0" prefWidth="167.0" text="feed manager" textOverrun="CLIP" VBox.vgrow="NEVER">
+            <Button fx:id="currentButton" mnemonicParsing="false" prefHeight="53.0" prefWidth="167.0" text="Gestione Feed" textOverrun="CLIP" VBox.vgrow="NEVER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToUserManager" prefHeight="53.0" prefWidth="167.0" text="user manager" textOverrun="CLIP" VBox.vgrow="NEVER">
+            <Button mnemonicParsing="false" onAction="#switchToUserManager" prefHeight="53.0" prefWidth="167.0" text="Gestione Utenti" textOverrun="CLIP" VBox.vgrow="NEVER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
          </children>
       </VBox>
+      <ImageView fx:id="floppyDisk" fitHeight="33.0" fitWidth="39.0" layoutX="434.0" layoutY="30.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@save.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

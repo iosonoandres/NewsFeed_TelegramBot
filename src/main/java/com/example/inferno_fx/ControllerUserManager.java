@@ -1,6 +1,7 @@
 package com.example.inferno_fx;
 
 import com.example.inferno_fx.OperazioniJSON.MappaCategorie;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -16,14 +17,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,8 +41,12 @@ public class ControllerUserManager implements Initializable{
 
     @FXML
     private Pane userPane;
+    @FXML
+    private ImageView floppyDisk;
 
-    private TreeItem<String> selectedEmployee;
+    private boolean salvato = true;
+
+
 
 
     //roba copiata da tutorial treeView
@@ -67,6 +75,10 @@ public class ControllerUserManager implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //all'inizio metto il tasto salvataggio trasparente perche' non c'e' nulla da salvare
+        floppyDisk.setOpacity(0.5);
+        //
+
         rootNode.setExpanded(true);
         for (Employee employee : employees) {
             TreeItem<String> empLeaf = new TreeItem<String>(employee.getName());
@@ -95,7 +107,7 @@ public class ControllerUserManager implements Initializable{
         treeView.setEditable(true);
         treeView.setCellFactory(new Callback<TreeView<String>,TreeCell<String>>(){
             @Override
-            public TreeCell<String> call(TreeView<String> p) {
+            public TreeCell<String> call(TreeView<String> p){
                 return new TextFieldTreeCellImpl();
             }
         });
@@ -124,6 +136,7 @@ public class ControllerUserManager implements Initializable{
                     TreeItem newEmployee =
                             new TreeItem<String>("New Employee");
                     getTreeItem().getChildren().add(newEmployee);
+                    nonSalvataggio();
                 }
             });
 
@@ -132,6 +145,7 @@ public class ControllerUserManager implements Initializable{
                     TreeItem newEmployee =
                             new TreeItem<String>("New Employee");
                     getTreeItem().getChildren().remove(newEmployee);
+                    nonSalvataggio();
                 }
             });
         }
@@ -182,6 +196,7 @@ public class ControllerUserManager implements Initializable{
                     }
                 }
             }
+
         }
 
         private void createTextField() {
@@ -192,6 +207,8 @@ public class ControllerUserManager implements Initializable{
                 public void handle(KeyEvent t) {
                     if (t.getCode() == KeyCode.ENTER) {
                         commitEdit(textField.getText());
+
+                        nonSalvataggio();
                     } else if (t.getCode() == KeyCode.ESCAPE) {
                         cancelEdit();
                     }
@@ -203,20 +220,61 @@ public class ControllerUserManager implements Initializable{
             return getItem() == null ? "" : getItem().toString();
         }
 
+
+
+
     }
 
 
 
     //roba per navigare le pagine sul pannello
     public void switchToAutenticazioneAdmin(ActionEvent event) throws IOException {
-        //pop-up di allarme, chiede se sei sicuro di voler fare il logout
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("Stai per effettuare il logout");
-        alert.setContentText("Considera un salvataggio prima di uscire");
-        if(alert.showAndWait().get() == ButtonType.OK) {
+        if(!salvato) {
+            //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText("Stai per effettuare il logout");
+            alert.setContentText("Considera un salvataggio prima di uscire");
+            if (alert.showAndWait().get() == ButtonType.OK) {
 
+                Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                String css = this.getClass().getResource("application.css").toExternalForm();
+                scene.getStylesheets().add(css);
+            }
+        }
+        else{
             Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);        }
+    }
+
+    public void switchToFeedManager(ActionEvent event) throws IOException {
+        //pop-up di allarme, ti ricorda di salvare prima di cambiare pagina
+        if(!salvato) {
+            //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initStyle(StageStyle.UNDECORATED);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText("Stai per cambiare pagina");
+            alert.setContentText("Considera un salvataggio prima di passare al Gestore Feed");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                alert.close();
+                Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                String css = this.getClass().getResource("application.css").toExternalForm();
+                scene.getStylesheets().add(css);
+            }
+        }
+        else{
+            Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -225,16 +283,18 @@ public class ControllerUserManager implements Initializable{
         }
     }
 
-    public void switchToFeedManager(ActionEvent event) throws IOException {
-        //pop-up di allarme, chiede se sei sicuro di voler fare il logout
-        Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        String css = this.getClass().getResource("application.css").toExternalForm();
-        scene.getStylesheets().add(css);
-    }
 
+    public void nonSalvataggio(){
+        this.salvato = false;
+        this.floppyDisk.setOpacity(1);
+    }
+    public void salvataggio(MouseEvent event){
+        salvato = true;
+        this.floppyDisk.setOpacity(0.5);
+        //l'idea e' che -premuto il tasto salvataggio- scorro gli elementi della TreeView e li paragono a quelli della mappa generata dal file, se c'e'
+        //qualcosa di nuovo lo aggiungo al file
+
+    }
 
 
 
