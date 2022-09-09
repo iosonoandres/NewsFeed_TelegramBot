@@ -2,27 +2,28 @@ package com.example.inferno_fx;
 
 import com.example.inferno_fx.OperazioniJSON.Utente;
 import com.example.inferno_fx.OperazioniJSON.gestoreGsonUtente;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class ControllerModificaUtente implements Initializable {
+public class ControllerAggiungiUtente implements Initializable {
     private Stage stage;
 
 
@@ -46,17 +47,6 @@ public class ControllerModificaUtente implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        File txtDaLeggere = new File("usernameUtenteInQuestione.txt");
-        String usernameUtenteInQuestione = "";
-        try {
-            Scanner scanner = new Scanner(txtDaLeggere);
-            usernameUtenteInQuestione = scanner.nextLine();
-        } catch (FileNotFoundException e) {
-            System.out.println("Errore nel leggere nome utente da file txt");
-        }
-        System.out.println(usernameUtenteInQuestione);
-
-
 
         try {
             this.UserList = ggu.readJsonLista("ListaUtentiVari.json");
@@ -64,30 +54,33 @@ public class ControllerModificaUtente implements Initializable {
             System.out.println("JSON Utenti inesistente");
         }
 
-        for (Utente u:UserList){
-
-            if (u.getUserName().equalsIgnoreCase(usernameUtenteInQuestione)){
-                this.utenteInQuestione = u;
-            }
-        }
 
 
-        titoloUtente.setText("🔨 Modifica Utente - "+usernameUtenteInQuestione);
-        UsernameBox.setText(utenteInQuestione.getUserName());
-        PasswordBox.setText(utenteInQuestione.getPassword());
+        titoloUtente.setText("✅ Aggiungi Utente");
+
 
 
     }
 
     public void salvataggio(MouseEvent event){
 
-        //l'idea e' che -premuto il tasto salvataggio- scorro gli elementi della TreeView, li metto in una nuovaLista,
-        //e tolgo dalla UserList gli elementi che non ci sono piu' nella nuovaLista
 
-        UserList.remove(utenteInQuestione);
-        this.utenteInQuestione.setUserName(UsernameBox.getText());
-        this.utenteInQuestione.setPassword(PasswordBox.getText());
-        UserList.add(utenteInQuestione);
+        if(UsernameBox.getText()!=null&&PasswordBox.getText()!=null){
+            boolean giaEsistente = false;
+
+            Utente utenteInQuestione = new Utente(UsernameBox.getText(), PasswordBox.getText());
+            for (Utente u : UserList) {
+                if (u.getUserName().equalsIgnoreCase(utenteInQuestione.getUserName())) {
+                    System.out.println("Utente gia' esistente");
+                    giaEsistente = true;
+                }
+            }
+            if(!giaEsistente){
+                UserList.add(utenteInQuestione);
+            }
+
+        }
+
 
 
 

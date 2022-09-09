@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="242.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerEliminaUtente">
+   <children>
+      <Label fx:id="titoloUtente" alignment="TOP_LEFT" layoutX="46.0" layoutY="7.0" prefHeight="89.0" prefWidth="262.0" text="❌ Elimina Utente" wrapText="true">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font></Label>
+      <TextField fx:id="UsernameBox" layoutX="177.0" layoutY="102.0" />
+      <Text fill="WHITE" layoutX="24.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utente da eliminare" />
+      <ImageView fx:id="floppyDisk" fitHeight="33.0" fitWidth="39.0" layoutX="333.0" layoutY="2.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@save.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="3.0" layoutY="7.0" onMouseClicked="#switchToUserManager" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VariePNG/backButton.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

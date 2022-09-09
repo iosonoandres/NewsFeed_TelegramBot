@@ -226,6 +226,47 @@ public class ControllerUserManager implements Initializable{
             scene.getStylesheets().add(css);        }
     }
 
+    public void aggiungiUtente(ActionEvent event)throws IOException{
+        Parent root = null;
+        try {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            root = FXMLLoader.load(getClass().getResource("AggiungiUtente.fxml"));
+            stage = new Stage();//(Stage) ((Node) t.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Errore nel caricare ModificaUtente.fxml");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void eliminaUtente(ActionEvent event)throws IOException{
+        Parent root = null;
+        try {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            root = FXMLLoader.load(getClass().getResource("EliminaUtente.fxml"));
+            stage = new Stage();//(Stage) ((Node) t.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Errore nel caricare ModificaUtente.fxml");
+            throw new RuntimeException(e);
+        }
+    }
 
     public void nonSalvataggio(){
         this.salvato = false;
@@ -300,7 +341,9 @@ public class ControllerUserManager implements Initializable{
 
 
 
-        @Override
+
+
+        /*@Override
         public void startEdit() {
             super.startEdit();
 
@@ -317,7 +360,7 @@ public class ControllerUserManager implements Initializable{
             super.cancelEdit();
             setText((String) getItem());
             setGraphic(getTreeItem().getGraphic());
-        }
+        }*/
 
         @Override
         public void updateItem(String item, boolean empty) {
