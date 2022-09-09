@@ -27,9 +27,8 @@ public class ControllerEliminaUtente implements Initializable {
 
     @FXML
     private TextField UsernameBox;
-
-
-
+    @FXML
+    private Label logMessage;
     @FXML
     private Label titoloUtente;
     @FXML
@@ -60,15 +59,19 @@ public class ControllerEliminaUtente implements Initializable {
     public void salvataggio(MouseEvent event){
 
 
-        if(UsernameBox.getText()!=null){
+        if(UsernameBox.getText()!=""){
+            boolean utenteEsistente = false;
 
             for (Utente u : UserList) {
                 if (u.getUserName().equalsIgnoreCase(UsernameBox.getText())) {
-                    System.out.println("Utente gia' esistente");
                     utenteInQuestione = u;
+                    utenteEsistente = true;
                 }
             }
-            UserList.remove(utenteInQuestione);
+            if(utenteEsistente) {
+                UserList.remove(utenteInQuestione);
+                logMessage.setText("Utente Rimosso 😅");
+            }
 
         }
 

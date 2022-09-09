@@ -37,6 +37,8 @@ public class ControllerAggiungiUtente implements Initializable {
     private Label titoloUtente;
     @FXML
     private ImageView floppyDisk;
+    @FXML
+    private Label logMessage;
     
 
     private ArrayList<Utente> UserList = new ArrayList<Utente>();
@@ -65,7 +67,7 @@ public class ControllerAggiungiUtente implements Initializable {
     public void salvataggio(MouseEvent event){
 
 
-        if(UsernameBox.getText()!=null&&PasswordBox.getText()!=null){
+        if(UsernameBox.getText()!=""&&PasswordBox.getText()!=""){
             boolean giaEsistente = false;
 
             Utente utenteInQuestione = new Utente(UsernameBox.getText(), PasswordBox.getText());
@@ -75,8 +77,9 @@ public class ControllerAggiungiUtente implements Initializable {
                     giaEsistente = true;
                 }
             }
-            if(!giaEsistente){
+            if(giaEsistente==false){
                 UserList.add(utenteInQuestione);
+                logMessage.setText("Utente Aggiunto👍");
             }
 
         }

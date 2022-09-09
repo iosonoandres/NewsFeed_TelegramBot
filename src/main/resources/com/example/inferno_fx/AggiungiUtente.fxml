@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="242.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerAggiungiUtente">
+<AnchorPane fx:id="backgroundFinestrina" prefHeight="242.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerAggiungiUtente">
    <children>
-      <Label fx:id="titoloUtente" alignment="TOP_LEFT" layoutX="46.0" layoutY="7.0" prefHeight="89.0" prefWidth="262.0" text="✅ Aggiungi Utente" wrapText="true">
+      <Label fx:id="titoloUtente" alignment="TOP_CENTER" layoutX="41.0" layoutY="2.0" prefHeight="89.0" prefWidth="296.0" text="✅ Aggiungi Utente" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Consolas" size="18.0" />
          </font></Label>
@@ -18,14 +18,15 @@
       <Text fill="WHITE" layoutX="24.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text fill="WHITE" layoutX="24.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <TextField fx:id="PasswordBox" layoutX="177.0" layoutY="166.0" />
-      <ImageView fx:id="floppyDisk" fitHeight="33.0" fitWidth="39.0" layoutX="333.0" layoutY="2.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@save.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="3.0" layoutY="7.0" onMouseClicked="#switchToUserManager" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="logMessage" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="17.0" prefWidth="337.0" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#switchToUserManager" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@VariePNG/backButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="floppyDisk" fitHeight="25.0" fitWidth="25.0" layoutX="352.0" layoutY="2.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@save.png" />
          </image>
       </ImageView>
    </children>

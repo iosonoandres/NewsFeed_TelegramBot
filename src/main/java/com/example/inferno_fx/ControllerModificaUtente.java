@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -36,6 +37,9 @@ public class ControllerModificaUtente implements Initializable {
     private Label titoloUtente;
     @FXML
     private ImageView floppyDisk;
+    @FXML
+    private Label logMessage;
+
     
 
     private ArrayList<Utente> UserList = new ArrayList<Utente>();
@@ -83,19 +87,18 @@ public class ControllerModificaUtente implements Initializable {
 
         //l'idea e' che -premuto il tasto salvataggio- scorro gli elementi della TreeView, li metto in una nuovaLista,
         //e tolgo dalla UserList gli elementi che non ci sono piu' nella nuovaLista
-
-        UserList.remove(utenteInQuestione);
-        this.utenteInQuestione.setUserName(UsernameBox.getText());
-        this.utenteInQuestione.setPassword(PasswordBox.getText());
-        UserList.add(utenteInQuestione);
-
-
-
-        try {
-            ggu.writeJson(UserList);
-        } catch (IOException e) {
-            System.out.println("Errore a trovare file json per aggiornare gli utenti");
-            throw new RuntimeException(e);
+        if((UsernameBox.getText()!=""&&PasswordBox.getText()!="")){
+            UserList.remove(utenteInQuestione);
+            this.utenteInQuestione.setUserName(UsernameBox.getText());
+            this.utenteInQuestione.setPassword(PasswordBox.getText());
+            UserList.add(utenteInQuestione);
+            try {
+                ggu.writeJson(UserList);
+                logMessage.setText("Modifica avvenuta con successo 😎");
+            } catch (IOException e) {
+                System.out.println("Errore a trovare file json per aggiornare gli utenti");
+                throw new RuntimeException(e);
+            }
         }
 
     }
