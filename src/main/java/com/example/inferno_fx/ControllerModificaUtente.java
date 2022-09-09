@@ -120,6 +120,8 @@ public class ControllerModificaUtente implements Initializable {
             System.out.println("Errore nel caricare UserManager.fxml");
             throw new RuntimeException(e);
         }
+        //commento per commit
+
 
     }
 
