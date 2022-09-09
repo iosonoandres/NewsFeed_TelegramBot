@@ -30,6 +30,9 @@ public class ControllerFeedManager implements Initializable{
     @FXML
     private Label cosaVorrestiAggiungere;
 
+    @FXML
+    private ImageView floppyDisk;
+
     private boolean salvato = true;
 
 
@@ -46,9 +49,9 @@ public class ControllerFeedManager implements Initializable{
         if(!salvato) {
             //pop-up di allarme, chiede se sei sicuro di voler fare il logout
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Logout");
+            alert.setTitle("Salvataggio");
             alert.setHeaderText("Stai per effettuare il logout");
-            alert.setContentText("Considera un salvataggio prima di uscire");
+            alert.setContentText("Procedere senza effettuare il salvataggio?");
             if (alert.showAndWait().get() == ButtonType.OK) {
 
                 Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
@@ -69,33 +72,37 @@ public class ControllerFeedManager implements Initializable{
     }
 
     public void switchToUserManager(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        String css = this.getClass().getResource("application.css").toExternalForm();
-        scene.getStylesheets().add(css);
+        if(!salvato) {
+            //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText("Stai per passare alla Gestione degli Utenti");
+            alert.setContentText("Procedere senza effettuare il salvataggio?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+
+                Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                String css = this.getClass().getResource("application.css").toExternalForm();
+                scene.getStylesheets().add(css);
+            }
+        }
+        else{
+            Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);        }
     }
 
-    public void mostraFinestraNotizie(/*MouseEvent event*/MouseEvent event) {
-           try {
-               Parent root = FXMLLoader.load(getClass().getResource("NotiziaManager.fxml"));
-               Stage stage = new Stage();
-               stage.setTitle("NotiziaManager");
-               scene = new Scene(root);
-               stage.setScene(scene);
-               String css = this.getClass().getResource("application.css").toExternalForm();
-               scene.getStylesheets().add(css);
-               stage.show();
-           }
-           catch (Exception e){
-               System.out.println("impossibile caricare finestra NotiziaManager");
-           }
-    }
-
-    //questo initializie serve per inizializzare la TreeView, altrimenti lo lascia vuoto
+    //TODO mettere initialize decente a "TreeCell implementation" per FeedManager
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //all'inizio metto il tasto salvataggio trasparente perche' non c'e' nulla da salvare
+        floppyDisk.setOpacity(0.5);
+        //
 
         //codice di prova per inizializzare la context menu e riempirla id MenuItem
         this.myContext = new ContextMenu();
@@ -140,15 +147,72 @@ public class ControllerFeedManager implements Initializable{
         }
 
         this.myTree.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        EventHandler<MouseEvent> mouseEventHandle = (MouseEvent event) -> {
-            mostraFinestraNotizie(event);
-        };
 
-        myTree.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
     }
 
+
+
+    public void switchToCommentManager(ActionEvent event) throws IOException {
+        if(!salvato) {
+            //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText("Stai per passare alla Gestione dei commenti");
+            alert.setContentText("Procedere senza effettuare il salvataggio?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+
+                Parent root = FXMLLoader.load(getClass().getResource("CommentManager.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                String css = this.getClass().getResource("application.css").toExternalForm();
+                scene.getStylesheets().add(css);
+            }
+        }
+        else{
+            Parent root = FXMLLoader.load(getClass().getResource("CommentManager.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);        }
+    }
+
+
+    public void switchToNotiziaManager(ActionEvent event) throws IOException {
+        if(!salvato) {
+            //pop-up di allarme, chiede se sei sicuro di voler fare il logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText("Stai per passare alla Gestione delle Notizie");
+            alert.setContentText("Procedere senza effettuare il salvataggio?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+
+                Parent root = FXMLLoader.load(getClass().getResource("NotiziaManager.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                String css = this.getClass().getResource("application.css").toExternalForm();
+                scene.getStylesheets().add(css);
+            }
+        }
+        else{
+            Parent root = FXMLLoader.load(getClass().getResource("NotiziaManager.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);        }
+    }
+
+
+    public void nonSalvataggio(){
+        this.salvato = false;
+        this.floppyDisk.setOpacity(1);
+    }
     public void salvataggio(MouseEvent event){
         salvato = true;
+        this.floppyDisk.setOpacity(0.5);
         //l'idea e' che -premuto il tasto salvataggio- scorro gli elementi della TreeView e li paragono a quelli della mappa generata dal file, se c'e'
         //qualcosa di nuovo lo aggiungo al file
 

@@ -11,8 +11,13 @@ module com.example.inferno_fx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires com.google.gson;
+    requires org.slf4j;
+    requires telegrambots.meta;
+    requires telegrambots;
+    requires com.rometools.rome;
 
-    opens com.example.inferno_fx to javafx.fxml;
     opens com.example.inferno_fx.OperazioniJSON to com.google.gson;
+    opens ZonaFeedConClassi to com.google.gson;
     exports com.example.inferno_fx;
+    opens com.example.inferno_fx to com.google.gson, javafx.fxml;
 }

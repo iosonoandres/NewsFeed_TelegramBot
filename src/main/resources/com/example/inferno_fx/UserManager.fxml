@@ -12,30 +12,68 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inferno_fx.ControllerUserManager">
    <children>
       <Button layoutX="470.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToAutenticazioneAdmin" text="Log Out" />
-      <VBox fx:id="scegliPagina" prefHeight="408.0" prefWidth="167.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="206.0" text="Naviga">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#switchToFeedManager" prefHeight="53.0" prefWidth="167.0" text="Gestione Feed" textOverrun="CLIP" VBox.vgrow="NEVER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="currentButton" mnemonicParsing="false" prefHeight="53.0" prefWidth="167.0" text="Gestione Utenti" textOverrun="CLIP" VBox.vgrow="NEVER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
       <Pane fx:id="userPane" layoutX="212.0" layoutY="71.0" prefHeight="312.0" prefWidth="377.0" />
       <ImageView fx:id="floppyDisk" fitHeight="33.0" fitWidth="39.0" layoutX="429.0" layoutY="31.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@save.png" />
          </image>
       </ImageView>
+      <VBox fx:id="scegliPagina" prefHeight="408.0" prefWidth="150.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="206.0" text="Naviga">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="currentButton" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="53.0" prefWidth="167.0" text="Gestione Utenti" textOverrun="CLIP" VBox.vgrow="NEVER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@VariePNG/UserAvatar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToFeedManager" prefHeight="53.0" prefWidth="167.0" text="Gestione Feed" textOverrun="CLIP" VBox.vgrow="NEVER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@VariePNG/RssIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToNotiziaManager" prefHeight="53.0" prefWidth="167.0" text="Gestione Notizie" textOverrun="CLIP">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@VariePNG/news.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToCommentManager" prefHeight="53.0" prefWidth="167.0" text="Gestione Commenti" textOverrun="CLIP">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@VariePNG/CommentIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

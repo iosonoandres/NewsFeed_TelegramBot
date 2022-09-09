@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: #082032;
+    -fx-background-color: #0d0d0d;
 }
 
 
@@ -21,19 +21,19 @@
 }
 
 .text-field:hover{
-    -fx-background-color: #97d2d4;
+    -fx-background-color: #abd2d4;
 }
 
 .button{
-    -fx-background-color: #FF5347;
+    -fx-background-color: #78b7ba;
 }
 
 .button:hover{
-    -fx-background-color: #FF7347;
+    -fx-background-color: #89c0c2;
 }
 
 .button:pressed{
-    -fx-background-color: #FF9347;
+    -fx-background-color: #9ac9cb;
 }
 
 
@@ -48,7 +48,7 @@
 
 .choice-box {
        -fx-background-color: black;
-       -fx-mark-color: orange;
+       -fx-mark-color: #78b7ba;
 }
 
 .choice-box > .label {
@@ -57,11 +57,14 @@
 }
 
 #scegliPagina{
-       -fx-background-color: #B0E0E6;
+       -fx-background-color: #112122;
 }
 
 #currentButton{
-       -fx-background-color: #990000;
+       -fx-background-color: #458487;
+}
+#currentButton:hover{
+    -fx-background-color: #4e9697;
 }
 
 #floppyDisk:pressed{

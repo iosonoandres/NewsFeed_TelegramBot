@@ -14,7 +14,7 @@ public class Pannello extends Application {
     public void start(Stage stage) throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
         //per ora carico direttamente FeedManager.fxml
-        Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -24,7 +24,7 @@ public class Pannello extends Application {
 
 
         stage.setTitle("FireNews24");
-        stage.getIcons().add(new Image(this.getClass().getResource("Template.jpeg").toString()));
+        stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

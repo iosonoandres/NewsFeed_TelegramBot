@@ -3,7 +3,7 @@ package com.example.inferno_fx.OperazioniJSON;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainCategorie {
+public class TestCategorie {
 
     public static void main(String[] args) throws IOException {
         ArrayList<String> linkSport = new ArrayList<>();
