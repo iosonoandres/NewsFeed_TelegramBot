@@ -143,9 +143,6 @@ public class ControllerCommentManager implements Initializable{
             });
         }
 
-
-
-
         @Override
         public void startEdit() {
             super.startEdit();
@@ -194,17 +191,13 @@ public class ControllerCommentManager implements Initializable{
 
         private void createTextField() {
             textField = new TextField(getString());
-            textField.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            textField.setOnKeyReleased(t -> {
+                if (t.getCode() == KeyCode.ENTER) {
+                    commitEdit(textField.getText());
 
-                @Override
-                public void handle(KeyEvent t) {
-                    if (t.getCode() == KeyCode.ENTER) {
-                        commitEdit(textField.getText());
-
-                        nonSalvataggio();
-                    } else if (t.getCode() == KeyCode.ESCAPE) {
-                        cancelEdit();
-                    }
+                    nonSalvataggio();
+                } else if (t.getCode() == KeyCode.ESCAPE) {
+                    cancelEdit();
                 }
             });
         }

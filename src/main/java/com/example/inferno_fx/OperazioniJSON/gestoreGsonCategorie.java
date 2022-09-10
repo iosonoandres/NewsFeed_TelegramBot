@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class gestoreGsonCategorie {
 
-    public Categoria readJSON(String percorso) {
+    public Categoria readJson(String percorso) {
     //commento
         try{
             GsonBuilder builder = new GsonBuilder();
@@ -29,8 +29,8 @@ public class gestoreGsonCategorie {
         }
     }
 
-    //WRITER PER CATEGORIEWS
-    public static void writeJSON(ArrayList<Categoria> categorie, String nomeFileOutput){
+    //WRITER PER CATEGORIE
+    public static void writeJson(ArrayList<Categoria> categorie, String nomeFileOutput){
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
 

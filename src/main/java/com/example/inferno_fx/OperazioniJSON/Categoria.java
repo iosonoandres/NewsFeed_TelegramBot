@@ -12,6 +12,10 @@ public class Categoria {
         this.link=link;
     }
 
+    public ArrayList<String> getFeed(){
+        return this.link;
+    }
+
 
 
 }

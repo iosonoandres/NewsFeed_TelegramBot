@@ -20,7 +20,7 @@ public class TestCategorie {
         listaDiCategorie.add(politica);
 
 
-        gestoreGsonCategorie.writeJSON(listaDiCategorie, "outputCategorie.json");
+        gestoreGsonCategorie.writeJson(listaDiCategorie, "outputCategorie.json");
 
 
 
