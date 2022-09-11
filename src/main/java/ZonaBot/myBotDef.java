@@ -23,7 +23,7 @@ import java.util.List;
 
 public class myBotDef extends TelegramLongPollingBot {
 
-    private Categorie categorieDisponibili = new Categorie("andale.json");
+    private Categorie categorieDisponibili = new Categorie("Categorie.json");
     private FeedObj feedDinamico;
     private String linkNuova;
     private GestoreFeedback gestoreDeiFeedback=new GestoreFeedback();

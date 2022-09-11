@@ -26,7 +26,7 @@ public class mainGsonPrincipale {
         gestoreJson_CATEGORIE GESONperCat = new gestoreJson_CATEGORIE();
 
 
-        Categorie categorieDaPrendere = new Categorie("andale.json");
+        Categorie categorieDaPrendere = new Categorie("Categorie.json");
 
 
         try {

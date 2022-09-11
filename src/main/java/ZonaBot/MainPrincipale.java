@@ -1,5 +1,6 @@
 package ZonaBot;
 
+import com.example.inferno_fx.Pannello;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -22,6 +23,7 @@ public class MainPrincipale {
             e.printStackTrace();
         }
         System.out.println("FIREBOTNEWS successfully started!");
+        Pannello.main(args);
     }
 }
 

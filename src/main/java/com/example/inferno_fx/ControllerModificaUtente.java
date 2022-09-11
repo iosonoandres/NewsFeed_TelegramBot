@@ -58,7 +58,7 @@ public class ControllerModificaUtente implements Initializable {
         } catch (FileNotFoundException e) {
             System.out.println("Errore nel leggere nome utente da file txt");
         }
-        System.out.println(usernameUtenteInQuestione);
+
 
 
 

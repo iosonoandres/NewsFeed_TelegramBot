@@ -117,7 +117,7 @@ public class ControllerFeedManager implements Initializable{
         this.rootItem = new TreeItem<>("Categorie",new ImageView(categorieBox));
         this.treeView = new TreeView<>(rootItem);
         rootItem.setExpanded(true);
-        MappaCategorie mappaCategorie = new MappaCategorie("outputCategorie.json");
+        /*MappaCategorie mappaCategorie = new MappaCategorie("Categorie.json");
         for(String nomeCategoria: mappaCategorie.getMappa().keySet()){
 
             TreeItem thisCategoria = new TreeItem(nomeCategoria, new ImageView(folderImage));
@@ -128,6 +128,15 @@ public class ControllerFeedManager implements Initializable{
                 //cosa significa questa riga di codice?
                 //thisLink.getGraphic().setOnMouseClicked(event -> System.out.println("OnAction {}"));
 
+                thisCategoria.getChildren().add(thisLink);
+            }
+        }*/
+
+        for(Categoria oggettoCategoria: gestoreGsonCategorie.convertReadJson("Categorie.json")){
+            TreeItem thisCategoria = new TreeItem(oggettoCategoria.getTitolo(), new ImageView(folderImage));
+            rootItem.getChildren().add(thisCategoria);
+            for(String link: oggettoCategoria.getFeed()){
+                TreeItem thisLink = new TreeItem(link, new ImageView(urlImage));
                 thisCategoria.getChildren().add(thisLink);
             }
         }
@@ -224,7 +233,7 @@ public class ControllerFeedManager implements Initializable{
         }
 
 
-        ggc.writeJson(nuovaCategoriaList, "outputCategorie.json");
+        ggc.writeJson(nuovaCategoriaList, "Categorie.json");
     }
     public void salvataggio(){
         salvato = true;
@@ -244,7 +253,7 @@ public class ControllerFeedManager implements Initializable{
         }
 
 
-        ggc.writeJson(nuovaCategoriaList, "outputCategorie.json");
+        gestoreGsonCategorie.convertWriteJson(nuovaCategoriaList, "Categorie.json");
     }
 
     public void eliminaFeed(ActionEvent event)throws IOException{

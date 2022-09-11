@@ -37,6 +37,21 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
         writer.write(ilToJson);
         writer.close();
     }
+
+    public void salvaSuFile(TreeMap<String, Feedback> mappa) throws IOException
+    {
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+
+        Gson gson = builder.create();
+        FileWriter writer = new FileWriter("notizieCommentate.json");
+        String ilToJson = gson.toJson(mappa);
+        writer.write(ilToJson);
+        writer.close();
+    }
+
+
+
     public void leggiDaFile() throws FileNotFoundException {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();

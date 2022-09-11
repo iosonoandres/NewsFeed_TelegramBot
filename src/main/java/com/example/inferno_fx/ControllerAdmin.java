@@ -36,7 +36,7 @@ public class ControllerAdmin{
     private Scene scene;
     private Parent root;
 
-    public void switchToFeedManager(ActionEvent event) throws IOException {
+    public void switchToUserManager(ActionEvent event) throws IOException {
         DatiAdmin datiAdmin = new DatiAdmin();
         datiAdmin.aggiungiAdmin("@parsssa13");
         datiAdmin.aggiungiAdmin("@Massimomanonpericolo");
@@ -46,7 +46,7 @@ public class ControllerAdmin{
         String inputUsername = usernameBox.getText();
 
         if(datiAdmin.getListaAdmin().contains(inputUsername) && datiAdmin.getPassword().equals(inputPassword)) {
-            Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

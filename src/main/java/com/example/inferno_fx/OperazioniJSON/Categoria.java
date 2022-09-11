@@ -16,6 +16,7 @@ public class Categoria {
         return this.link;
     }
 
-
-
+    public String getTitolo() {
+        return titolo;
+    }
 }

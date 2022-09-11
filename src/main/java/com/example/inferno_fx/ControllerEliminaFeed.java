@@ -45,7 +45,7 @@ public class ControllerEliminaFeed implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
-        this.categorieList = ggc.readJSONArray("outputCategorie.json");
+        this.categorieList = gestoreGsonCategorie.convertReadJson("Categorie.json");
 
 
     }
@@ -76,7 +76,7 @@ public class ControllerEliminaFeed implements Initializable {
         }
 
 
-        ggc.writeJson(categorieList,"outputCategorie.json");
+        gestoreGsonCategorie.convertWriteJson(categorieList,"Categorie.json");
 
     }
 

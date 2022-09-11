@@ -14,9 +14,17 @@ public class MappaCategorie{
         this.mappa = new TreeMap<>();
 
         gestoreGsonCategorie gestorone = new gestoreGsonCategorie();
-        ArrayList<Categoria> temporaneo =   gestorone.readJSONArray(nomePercorso);
-        for(Categoria C : temporaneo){
-            this.mappa.put(C.titolo, C.link);
+        try {
+            ArrayList<Categoria> temporaneo = gestorone.readJSONArray(nomePercorso);
+            for (Categoria C : temporaneo) {
+                this.mappa.put(C.titolo, C.link);
+            }
+        }catch (Error e){
+            System.out.println("per questioni di compatibilita' uso convertReadJson");
+            ArrayList<Categoria> temporaneo = gestoreGsonCategorie.convertReadJson(nomePercorso);
+            for (Categoria C : temporaneo) {
+                this.mappa.put(C.titolo, C.link);
+            }
         }
     }
 

@@ -1,5 +1,7 @@
 package com.example.inferno_fx;
 
+import ZonaFeedConClassi.Feedback;
+import ZonaFeedConClassi.GestoreFeedback;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -25,6 +27,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 
 
 public class ControllerCommentManager implements Initializable{
@@ -47,20 +50,10 @@ public class ControllerCommentManager implements Initializable{
             new ImageView(new Image(getClass().getResourceAsStream("categorie.png")));
     private final Image depIcon =
             new Image(getClass().getResourceAsStream("Folder.png"));
-    List<Employee> employees = Arrays.<Employee>asList(
-            new Employee("Ethan Williams", "Sales Department"),
-            new Employee("Emma Jones", "Sales Department"),
-            new Employee("Michael Brown", "Sales Department"),
-            new Employee("Anna Black", "Sales Department"),
-            new Employee("Rodger York", "Sales Department"),
-            new Employee("Susan Collins", "Sales Department"),
-            new Employee("Mike Graham", "IT Support"),
-            new Employee("Judy Mayer", "IT Support"),
-            new Employee("Gregory Smith", "IT Support"),
-            new Employee("Jacob Smith", "Accounts Department"),
-            new Employee("Isabella Johnson", "Accounts Department"));
-    TreeItem<String> rootNode =
-            new TreeItem<String>("MyCompany Human Resources"/*, rootIcon*/);
+
+    private TreeMap<String, Feedback> listaNotizieCommentate;
+    private GestoreFeedback gf = new GestoreFeedback();
+    TreeItem<String> rootNode = new TreeItem<String>("Notizie Commentate",new ImageView(new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, false)));
 
 
      //fine roba copiata da tutorial treeView
@@ -68,36 +61,33 @@ public class ControllerCommentManager implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        this.listaNotizieCommentate = gf.getListaNotizieCommentate();
         //all'inizio metto il tasto salvataggio trasparente perche' non c'e' nulla da salvare
         floppyDisk.setOpacity(0.5);
         //
 
         rootNode.setExpanded(true);
-        for (Employee employee : employees) {
-            TreeItem<String> empLeaf = new TreeItem<String>(employee.getName());
-            boolean found = false;
-            for (TreeItem<String> depNode : rootNode.getChildren()) {
-                if (depNode.getValue().contentEquals(employee.getDepartment())){
-                    depNode.getChildren().add(empLeaf);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                TreeItem<String> depNode = new TreeItem<String>(
-                        employee.getDepartment()
-                        //new ImageView(depIcon)
-                );
-                rootNode.getChildren().add(depNode);
-                depNode.getChildren().add(empLeaf);
+        for (String linkNotizia : listaNotizieCommentate.keySet()) {
+            TreeItem<String> itemNotiziaCommentata = new TreeItem<String>(linkNotizia, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/news.png"),14, 14, false, false)));
+            itemNotiziaCommentata.setExpanded(true);
+            rootNode.getChildren().add(itemNotiziaCommentata);
+            Feedback feedBackTemp = listaNotizieCommentate.get(linkNotizia);
+            for(String parere: feedBackTemp.getCommenti()){
+                TreeItem<String> itemCommento = new TreeItem<>(parere, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/talk.png"),14, 14, false, false)));
+                itemNotiziaCommentata.getChildren().add(itemCommento);
             }
         }
 
 
 
 
+
         TreeView<String> treeView = new TreeView<String>(rootNode);
-        treeView.setEditable(true);
+
+        //questa TreeView qua non deve essere editabile
+        //treeView.setEditable(true);
         treeView.setCellFactory(new Callback<TreeView<String>,TreeCell<String>>(){
             @Override
             public TreeCell<String> call(TreeView<String> p){
@@ -118,27 +108,35 @@ public class ControllerCommentManager implements Initializable{
 
         public TextFieldTreeCellImpl() {
 
-
-            MenuItem addMenuItem = new MenuItem("Add Employee");
-            MenuItem removeMenuItem = new MenuItem("Remove");
-            addMenu.getItems().add(addMenuItem);
+            MenuItem removeMenuItem = new MenuItem("Cancella commento");
             addMenu.getItems().add(removeMenuItem);
 
-            addMenuItem.setOnAction(new EventHandler() {
-                public void handle(Event t) {
-                    TreeItem newEmployee =
-                            new TreeItem<String>("New Employee");
-                    getTreeItem().getChildren().add(newEmployee);
-                    nonSalvataggio();
-                }
-            });
 
             removeMenuItem.setOnAction(new EventHandler() {
                 public void handle(Event t) {
-                    TreeItem newEmployee =
-                            new TreeItem<String>("New Employee");
-                    getTreeItem().getChildren().remove(newEmployee);
-                    nonSalvataggio();
+                    boolean commentoEsistente = false;
+                    Feedback feedbackTempInQuestione = new Feedback();
+                    String linkInQuestione = "";
+                    String parereInQuestione = "";
+                    int posizioneFeedBackInQuestione = 0;
+                    for (String linkNotizia : listaNotizieCommentate.keySet()) {
+                        Feedback feedBackTemp = listaNotizieCommentate.get(linkNotizia);
+                        for(int i=0;i<feedBackTemp.getCommenti().size();i++){
+                            if (feedBackTemp.getCommenti().get(i).equals(getTreeItem().getValue().toString())){
+                                commentoEsistente = true;
+                                feedbackTempInQuestione=feedBackTemp;
+                                parereInQuestione = feedBackTemp.getCommenti().get(i);
+                                linkInQuestione = linkNotizia;
+                                break;
+                            }
+                        }
+                    }
+                    if(commentoEsistente){
+                        listaNotizieCommentate.get(linkInQuestione).getCommenti().remove(parereInQuestione);
+                        listaNotizieCommentate.keySet().remove(feedbackTempInQuestione);
+                        getTreeItem().getParent().getChildren().remove(getTreeItem());
+                        nonSalvataggio();
+                    }
                 }
             });
         }
@@ -180,7 +178,7 @@ public class ControllerCommentManager implements Initializable{
                     setText(getString());
                     setGraphic(getTreeItem().getGraphic());
                     if (
-                            !getTreeItem().isLeaf()&&getTreeItem().getParent()!= null
+                            getTreeItem().isLeaf()&&getTreeItem().getParent()!= null
                     ){
                         setContextMenu(addMenu);
                     }
@@ -333,9 +331,12 @@ public class ControllerCommentManager implements Initializable{
     public void salvataggio(MouseEvent event){
         salvato = true;
         this.floppyDisk.setOpacity(0.5);
-        //l'idea e' che -premuto il tasto salvataggio- scorro gli elementi della TreeView e li paragono a quelli della mappa generata dal file, se c'e'
-        //qualcosa di nuovo lo aggiungo al file, e nel caso li toglie
-
+        try {
+            gf.salvaSuFile(this.listaNotizieCommentate);
+        } catch (IOException e) {
+            System.out.println("file notizieCommentate.json non trovato");
+            throw new RuntimeException(e);
+        }
     }
 
 

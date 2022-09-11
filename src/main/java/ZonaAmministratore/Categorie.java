@@ -11,6 +11,10 @@ import java.util.TreeMap;
 public class Categorie
 {
     TreeMap<String, ArrayList<String>> categories;
+
+    public void setMappa(TreeMap<String, ArrayList<String>> mappa){
+        this.categories = mappa;
+    }
     public Categorie(String percorsoJson) //costruisco un oggetto categorie dando in input il percorso del file json da cui prendere i dati
     {
         try
@@ -23,7 +27,7 @@ public class Categorie
 
             Gson gson = builder.create();
             BufferedReader bufferedReader = new BufferedReader(
-                    new FileReader("andale.json"));
+                    new FileReader("Categorie.json"));
             categories = gson.fromJson(bufferedReader, TreeMap.class);
             System.out.println("output di debug: ecco com'è venuta la mappa");
             System.out.println(categories);
@@ -69,5 +73,18 @@ public class Categorie
         writer.write(gson.toJson(categories));
         writer.close();
 
+    }
+
+    public void writeJsonVersioneVecchia(String percorso){
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            Gson gson = builder.create();
+            FileWriter writer = new FileWriter(percorso);
+            writer.write(gson.toJson(categories));
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

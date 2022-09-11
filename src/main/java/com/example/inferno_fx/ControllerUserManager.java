@@ -65,7 +65,7 @@ public class ControllerUserManager implements Initializable{
 
 
     TreeItem<String> rootNode =
-            new TreeItem<String>("Utenti presenti nel Bot"/*, rootIcon*/);
+            new TreeItem<String>("Utenti presenti nel Bot", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/community.png"),22, 18, false, false)));
 
     public ArrayList<Utente> UserList = new ArrayList<>();
     gestoreGsonUtente ggu = new gestoreGsonUtente();
@@ -85,7 +85,7 @@ public class ControllerUserManager implements Initializable{
             this.UserList = ggu.readJsonLista("ListaUtentiVari.json");
         } catch (
                 FileNotFoundException e) {
-            System.out.println("File not trovato!!!!");
+            System.out.println("File Json Utenti trovato!!!!");
         }
 
         //all'inizio metto il tasto salvataggio trasparente perche' non c'e' nulla da salvare
@@ -94,7 +94,7 @@ public class ControllerUserManager implements Initializable{
 
         rootNode.setExpanded(true);
         for (Utente u : UserList) {
-            TreeItem<String> userLeaf = new TreeItem<String>(u.getUserName());
+            TreeItem<String> userLeaf = new TreeItem<String>(u.getUserName(), new ImageView(new Image(getClass().getResourceAsStream("VariePNG/UserAvatar2.png"),14, 14, false, false)));
                     rootNode.getChildren().add(userLeaf);
 
                 }

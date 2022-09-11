@@ -15,6 +15,7 @@ module com.example.inferno_fx {
     requires telegrambots.meta;
     requires telegrambots;
     requires com.rometools.rome;
+    requires annotations;
 
     opens com.example.inferno_fx.OperazioniJSON to com.google.gson;
     opens ZonaFeedConClassi to com.google.gson;

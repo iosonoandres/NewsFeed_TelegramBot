@@ -39,7 +39,7 @@
          </font>
       </Text>
       <Text layoutX="313.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button layoutX="309.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToFeedManager" text="Procedi" />
+      <Button layoutX="309.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToUserManager" text="Procedi" />
       <Label layoutX="243.0" layoutY="66.0" text="AUTENTICAZIONE ADMIN">
          <font>
             <Font name="Consolas" size="30.0" />
