@@ -1,6 +1,7 @@
 package ZonaFeedConClassi;
 
-import com.rometools.rome.feed.atom.Feed;
+
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

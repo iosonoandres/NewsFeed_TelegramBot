@@ -69,7 +69,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="userPane" layoutX="212.0" layoutY="71.0" prefHeight="312.0" prefWidth="377.0" />
+      <Pane fx:id="userPane" layoutX="171.0" layoutY="71.0" prefHeight="312.0" prefWidth="418.0" />
       <ImageView fx:id="floppyDisk" fitHeight="33.0" fitWidth="39.0" layoutX="429.0" layoutY="31.0" onMouseClicked="#salvataggio" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@save.png" />

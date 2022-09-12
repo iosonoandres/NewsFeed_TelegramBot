@@ -5,44 +5,31 @@ public class Utente
     //l'utente deve avere un feedback (commento + voto) (appartiene sia alla notizia che all'utente quindi servirà un'altra classe)
     //un user id così possiamo indicizzarlo (è un integer), prendiamo anche il nome così lo visualizziamo
 
-    //EXTRA: Categorie preferite?
     //private int UserID; useless in teoria
+
     private String UserName;
-    //mancava la password
     private String Password;
+    private boolean Online;
+    private long chatId;
 
-    private String ultimaNotizia; //lista di link delle notizie, così sappiamo con quali notizie ha interagito l'utente, così per esempio possiamo fare che non vengono rimandate di nuovo
-
-
-    private boolean registrato = Boolean.FALSE;
-    //l'amministratore può prendere le notizie con cui ha interagito l'utente e prendere
-    //NotizieSalvate.getKey(il proprio userid).getFeedback
-    //
-
-    public Utente(String UserName, String Password) //costruttore senza ultimanotizia
+    public Utente(String UserName, String Password, boolean Online, long chatId)
     {
         //this.UserID=UserID;
         this.UserName=UserName;
         this.Password = Password;
-        this.ultimaNotizia = null;
+        this.Online=Online;
+        this.chatId=chatId;
     }
-    public Utente(String UserName, String Password, String ultimaNotizia) //costruttore con
+
+    public String toString()
     {
-        //this.UserID=UserID;
-        this.UserName=UserName;
-        this.Password = Password;
-        this.ultimaNotizia = ultimaNotizia;
+        String s="";
+        s+=UserName+"\n";
+        s+="password: "+Password+"\n";
+        return s;
     }
 
-    public boolean isRegistrato() {
-        return registrato;
-    }
-
-    public void setRegistrato(boolean registrato) {
-        this.registrato = registrato;
-    }
-
-//metodi get
+    //metodi get
     //public int getUserID(){return UserID;}
 
     public String getUserName()
@@ -56,14 +43,21 @@ public class Utente
         this.Password = Password;
     }
 
-    public void setNome(String Nome){
-        this.UserName = Nome;
+    public void setUserName(String Nome){UserName=Nome;}
+
+    public boolean getOnline() {
+        return Online;
     }
 
+    public void setOnline(boolean online) {
+        Online = online;
+    }
 
-    //metodo che deve essere invocato quando l'utente esce dal bot/è offline da 5 minuti ecc.
-    public void salvaUtente(String linkUltimaNotizia) //metodo da chiamare nel codice del bot
-    {
-        this.ultimaNotizia=linkUltimaNotizia;
+    public long getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(long chatId) {
+        this.chatId = chatId;
     }
 }

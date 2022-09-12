@@ -2,16 +2,25 @@
   {
     "UserName": "jjsdbkj",
     "Password": "kjsdf",
-    "registrato": false
+    "Online": false,
+    "chatId": 0
   },
   {
     "UserName": "Parssssa13",
     "Password": "123ADMIN",
-    "registrato": false
+    "Online": false,
+    "chatId": 0
   },
   {
     "UserName": "jhgjhghghg",
     "Password": "Titolo",
-    "registrato": false
+    "Online": false,
+    "chatId": 0
+  },
+  {
+    "UserName": "parsa",
+    "Password": "123ADMIN",
+    "Online": true,
+    "chatId": 845025826
   }
 ]
