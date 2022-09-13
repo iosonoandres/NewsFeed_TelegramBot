@@ -30,6 +30,7 @@ public class DatiAdmin {
     }
 
 
+    //main che si esegue solo per inserire admin in un arrayList e determinare password
     /*public static void main(String[] args) {
         DatiAdmin datiAdmin = new DatiAdmin();
         datiAdmin.aggiungiAdmin("@parsssa13");

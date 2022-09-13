@@ -85,6 +85,8 @@ public class ControllerCommentManager implements Initializable{
 
 
         TreeView<String> treeView = new TreeView<String>(rootNode);
+        treeView.setPrefWidth(400);
+        treeView.setPrefHeight(300);
 
         //questa TreeView qua non deve essere editabile
         //treeView.setEditable(true);
