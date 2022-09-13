@@ -24,10 +24,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.TreeMap;
+import java.util.*;
 
 
 public class ControllerCommentManager implements Initializable{
@@ -53,7 +50,7 @@ public class ControllerCommentManager implements Initializable{
 
     private TreeMap<String, Feedback> listaNotizieCommentate;
     private GestoreFeedback gf = new GestoreFeedback();
-    TreeItem<String> rootNode = new TreeItem<String>("Notizie Commentate",new ImageView(new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, false)));
+    TreeItem<String> rootNode = new TreeItem<String>("Notizie Commentate",new ImageView(new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, true)));
 
 
      //fine roba copiata da tutorial treeView
@@ -70,12 +67,15 @@ public class ControllerCommentManager implements Initializable{
 
         rootNode.setExpanded(true);
         for (String linkNotizia : listaNotizieCommentate.keySet()) {
-            TreeItem<String> itemNotiziaCommentata = new TreeItem<String>(linkNotizia, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/news.png"),14, 14, false, false)));
+            TreeItem<String> itemNotiziaCommentata = new TreeItem<String>(linkNotizia, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/news.png"),14, 14, false, true)));
             itemNotiziaCommentata.setExpanded(true);
-            rootNode.getChildren().add(itemNotiziaCommentata);
+            ArrayList<String> esempioArrayVuoto = new ArrayList<>();
+            if(!listaNotizieCommentate.get(linkNotizia).getCommenti().equals(esempioArrayVuoto)) {
+                rootNode.getChildren().add(itemNotiziaCommentata);
+            }
             Feedback feedBackTemp = listaNotizieCommentate.get(linkNotizia);
             for(String parere: feedBackTemp.getCommenti()){
-                TreeItem<String> itemCommento = new TreeItem<>(parere, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/talk.png"),14, 14, false, false)));
+                TreeItem<String> itemCommento = new TreeItem<>(parere, new ImageView(new Image(getClass().getResourceAsStream("VariePNG/talk.png"),14, 14, false, true)));
                 itemNotiziaCommentata.getChildren().add(itemCommento);
             }
         }

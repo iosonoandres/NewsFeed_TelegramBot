@@ -49,9 +49,9 @@ public class ControllerFeedManager implements Initializable{
     private ContextMenu myContext;
 
 
-    Image categorieBox = new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, false);
-    Image folderImage = new Image(getClass().getResourceAsStream("folder.png"), 15, 15, false, false);
-    Image urlImage = new Image(getClass().getResourceAsStream("url.png"), 14, 14, false, false);
+    Image categorieBox = new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, true);
+    Image folderImage = new Image(getClass().getResourceAsStream("folder.png"), 15, 15, false, true);
+    Image urlImage = new Image(getClass().getResourceAsStream("url.png"), 14, 14, false, true);
     private TreeItem<String> rootItem;
 
     public void switchToAutenticazioneAdmin(ActionEvent event) throws IOException {

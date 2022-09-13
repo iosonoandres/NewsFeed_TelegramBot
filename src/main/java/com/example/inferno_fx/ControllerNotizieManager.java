@@ -59,11 +59,11 @@ public class ControllerNotizieManager implements Initializable {
     private final Image depIcon = new Image(getClass().getResourceAsStream("Folder.png"));
 
     TreeItem<String> rootNode = new TreeItem<String>("Notizie per categoria");
-    TreeItem<String> viewSport = new TreeItem<String>("Sport");
-    TreeItem<String> viewPolitica = new TreeItem<String>("Politica");
-    TreeItem<String> viewSpettacolo = new TreeItem<String>("Spettacolo");
-    TreeItem<String> viewTech = new TreeItem<String>("Tech");
-    TreeItem<String> viewEconomia = new TreeItem<String>("Economia");
+    TreeItem<String> viewSport = new TreeItem<String>("Sport", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/sportIcon.png"),18, 18, false, true)));
+    TreeItem<String> viewPolitica = new TreeItem<String>("Politica", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/politicsIcon.png"),18, 18, false, true)));
+    TreeItem<String> viewSpettacolo = new TreeItem<String>("Spettacolo", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/cinemaIcon.png"),18, 18, false, true)));
+    TreeItem<String> viewTech = new TreeItem<String>("Tech", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/laptopIcon.png"),17, 18, false, true)));
+    TreeItem<String> viewEconomia = new TreeItem<String>("Economia", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/economyIcon.png"),18, 18, false, true)));
 
 
 
@@ -198,10 +198,10 @@ public class ControllerNotizieManager implements Initializable {
 
             MenuItem addMenuItem = new MenuItem("Aggiungi Notizia");
             MenuItem removeMenuItem = new MenuItem("Elimina Notizia");
-            addMenu.getItems().add(addMenuItem);
+            //addMenu.getItems().add(addMenuItem);
             addMenu.getItems().add(removeMenuItem);
 
-            addMenuItem.setOnAction(new EventHandler() {
+            /*addMenuItem.setOnAction(new EventHandler() {
                 public void handle(Event t) {
                     TreeItem newEmployee =
                             new TreeItem<String>("Nuova Notizia");
@@ -209,7 +209,7 @@ public class ControllerNotizieManager implements Initializable {
                     nonSalvataggio();
                 }
             });
-
+*/
             removeMenuItem.setOnAction(new EventHandler() {
                 public void handle(Event t) {
                     getTreeItem().getParent().getChildren().remove(getTreeItem());

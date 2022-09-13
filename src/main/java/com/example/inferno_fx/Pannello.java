@@ -14,7 +14,7 @@ public class Pannello extends Application {
     public void start(Stage stage) throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
         //per ora carico direttamente FeedManager.fxml
-        Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
 
         Scene scene = new Scene(root);
 

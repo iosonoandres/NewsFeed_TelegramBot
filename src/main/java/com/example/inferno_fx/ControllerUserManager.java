@@ -65,7 +65,7 @@ public class ControllerUserManager implements Initializable{
 
 
     TreeItem<String> rootNode =
-            new TreeItem<String>("Utenti presenti nel Bot", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/community.png"),22, 18, false, false)));
+            new TreeItem<String>("Utenti presenti nel Bot", new ImageView(new Image(getClass().getResourceAsStream("VariePNG/community.png"),22, 18, false, true)));
 
     public ArrayList<Utente> UserList = new ArrayList<>();
     gestoreGsonUtente ggu = new gestoreGsonUtente();
@@ -94,7 +94,7 @@ public class ControllerUserManager implements Initializable{
 
         rootNode.setExpanded(true);
         for (Utente u : UserList) {
-            TreeItem<String> userLeaf = new TreeItem<String>(u.getUserName(), new ImageView(new Image(getClass().getResourceAsStream("VariePNG/UserAvatar2.png"),14, 14, false, false)));
+            TreeItem<String> userLeaf = new TreeItem<String>(u.getUserName(), new ImageView(new Image(getClass().getResourceAsStream("VariePNG/UserAvatar2.png"),14, 14, false, true)));
                     rootNode.getChildren().add(userLeaf);
 
                 }
@@ -308,34 +308,11 @@ public class ControllerUserManager implements Initializable{
 
         private TextField textField;
         private ContextMenu addMenu = new ContextMenu();
+        //non vado ad implementare addMenu (contextMenu) che tanto non serve  per gli Utenti
 
 
         public TextFieldTreeCellImpl() {
 
-
-
-            MenuItem addMenuItem = new MenuItem("Add Employee");
-            MenuItem removeMenuItem = new MenuItem("Remove");
-            addMenu.getItems().add(addMenuItem);
-            addMenu.getItems().add(removeMenuItem);
-
-            addMenuItem.setOnAction(new EventHandler() {
-                public void handle(Event t) {
-                    TreeItem newEmployee =
-                            new TreeItem<String>("Nuovo Utente");
-                    getTreeItem().getChildren().add(newEmployee);
-                    nonSalvataggio();
-                }
-            });
-
-            removeMenuItem.setOnAction(new EventHandler() {
-                public void handle(Event t) {
-                    TreeItem newEmployee =
-                            new TreeItem<String>("New Employee");
-                    getTreeItem().getChildren().remove(newEmployee);
-                    nonSalvataggio();
-                }
-            });
         }
 
 
