@@ -1,7 +1,68 @@
 [
-  "TreeItem [ value: Elezioni, confronto Letta-Meloni: scintille su Pnrr e Ue ]",
-  "TreeItem [ value: Energia: Bianchi, governo mai parlato settimana corta a scuola ]",
-  "TreeItem [ value: I programmi a confronto ]",
-  "TreeItem [ value: Papa: \u0027Imprenditori creino lavoro, specie per i giovani\u0027 ]",
-  "TreeItem [ value: Singapore, amb.Vattani firma registro condoglianze Elisabetta II ]"
+  {
+    "titolo": "I programmi a confronto",
+    "data": "Sep 12, 2022, 5:48:22 PM",
+    "description": "Divisi su riforme, fisco, migranti,diritti civili.Nodo ambiente",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/12/i-programmi-a-confronto_d01f666c-c99d-40c0-8971-0f56c44d146b.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Papa: \u0027Imprenditori creino lavoro, specie per i giovani\u0027",
+    "data": "Sep 13, 2022, 7:48:56 AM",
+    "description": "",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/12/papa-imprenditori-creino-lavoro-specie-per-i-giovani_131b3b4f-7fab-433f-b4fd-4b19aaa1cb19.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Singapore, amb.Vattani firma registro condoglianze Elisabetta II",
+    "data": "Sep 12, 2022, 1:30:01 PM",
+    "description": "Alla residenza dell\u0027High Commissioner britannica Owen",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/12/singapore-amb.vattani-firma-registro-condoglianze-elisabetta-ii_2cc543fc-afe5-491c-b035-6c8230df9a44.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Il Papa è in volo verso il Kazakistan",
+    "data": "Sep 13, 2022, 7:55:10 AM",
+    "description": "A Mattarella: \u0027Concordia e serenità per l\u0027Italia\u0027",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/13/papa-e-in-volo-per-il-kazakistan_ec129e64-1e42-42f8-a97a-51f15c1d9216.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Papa:Francesco a Fiumicino in partenza per il Kazakistan",
+    "data": "Sep 13, 2022, 7:27:07 AM",
+    "description": "E\u0027 il 38/esimo viaggio apostolico da inizio pontificato",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/13/papafrancesco-a-fiumicino.a-breve-partenza-per-kazakistan_7e64cd5d-d8fa-4716-b268-be41a497ab3a.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Scuola: Bianchi, settimana corta? Non per risparmio energetico",
+    "data": "Sep 13, 2022, 10:34:28 AM",
+    "description": "Si può fare nell\u0027ambito di un piano didattico",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/politica/2022/09/13/scuola-bianchi-settimana-corta-non-per-risparmio-energetico_3b7c68f5-5214-45a8-8bd1-e3cffae2be07.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  }
 ]

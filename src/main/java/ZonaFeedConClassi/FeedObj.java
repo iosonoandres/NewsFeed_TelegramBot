@@ -76,7 +76,7 @@ public class FeedObj {
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotizieRimosse.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<String>>(){}.getType();
+            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
             listaNotizieRimosse = gson.fromJson(bufferedReader, mapType);
         } catch (FileNotFoundException e) {
             System.out.println("Non trovo il file NotizieRimosse.json");

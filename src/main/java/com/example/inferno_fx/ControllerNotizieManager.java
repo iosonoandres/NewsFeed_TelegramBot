@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class ControllerNotizieManager implements Initializable{
+public class ControllerNotizieManager implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -46,16 +46,15 @@ public class ControllerNotizieManager implements Initializable{
     private ImageView floppyDisk;
 
     private boolean salvato = true;
-    private ArrayList<Notizia> arraySport = new ArrayList<>();
+    private ArrayList<Notizia> arraySport;
     private ArrayList<Notizia> arrayPolitica = new ArrayList<>();
     private ArrayList<Notizia> arraySpettacolo = new ArrayList<>();
     private ArrayList<Notizia> arrayTech = new ArrayList<>();
     private ArrayList<Notizia> arrayEconomia = new ArrayList<>();
 
+    private ArrayList<Notizia> notizieRimosse = new ArrayList<>();
 
 
-
-    //roba copiata da tutorial treeView
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("categorie.png")));
     private final Image depIcon = new Image(getClass().getResourceAsStream("Folder.png"));
 
@@ -67,13 +66,12 @@ public class ControllerNotizieManager implements Initializable{
     TreeItem<String> viewEconomia = new TreeItem<String>("Economia");
 
 
-    //fine roba copiata da tutorial treeView
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        rootNode.getChildren().addAll(viewSport,viewPolitica,viewSpettacolo,viewTech,viewEconomia);
+        rootNode.getChildren().addAll(viewSport, viewPolitica, viewSpettacolo, viewTech, viewEconomia);
         rootNode.setExpanded(true);
 
         //TODO mettere tutto il codice per far vedere le notizie dai vari file, che sarebbero:
@@ -84,15 +82,15 @@ public class ControllerNotizieManager implements Initializable{
         //NotizieEconomia.json
 
         //questo blocco try riempie la TreeItem itemSport
-        try{
+        try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotizieSport.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
-            this.arraySport = gson.fromJson(bufferedReader, mapType);
-            for(Notizia nsport:arraySport){
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {}.getType();
+            arraySport = gson.fromJson(bufferedReader, mapType);
+            for (Notizia nsport : arraySport) {
                 TreeItem<String> itemSport = new TreeItem<String>(nsport.getTitolo());
                 viewSport.getChildren().add(itemSport);
             }
@@ -101,15 +99,16 @@ public class ControllerNotizieManager implements Initializable{
             throw new RuntimeException(e);
         }
         //questo blocco try riempie la TreeItem itemPolitica
-        try{
+        try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotiziePolitica.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {
+            }.getType();
             this.arraySport = gson.fromJson(bufferedReader, mapType);
-            for(Notizia nsport:arraySport){
+            for (Notizia nsport : arraySport) {
                 TreeItem<String> itemPolitica = new TreeItem<String>(nsport.getTitolo());
                 viewPolitica.getChildren().add(itemPolitica);
             }
@@ -118,15 +117,16 @@ public class ControllerNotizieManager implements Initializable{
             throw new RuntimeException(e);
         }
         //questo blocco try riempie la TreeItem itemSpettacolo
-        try{
+        try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotizieSpettacolo.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {
+            }.getType();
             this.arraySport = gson.fromJson(bufferedReader, mapType);
-            for(Notizia nsport:arraySport){
+            for (Notizia nsport : arraySport) {
                 TreeItem<String> itemSpettacolo = new TreeItem<String>(nsport.getTitolo());
                 viewSpettacolo.getChildren().add(itemSpettacolo);
             }
@@ -135,15 +135,16 @@ public class ControllerNotizieManager implements Initializable{
             throw new RuntimeException(e);
         }
         //questo blocco try riempie la TreeItem itemTech
-        try{
+        try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotizieTech.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {
+            }.getType();
             this.arraySport = gson.fromJson(bufferedReader, mapType);
-            for(Notizia nsport:arraySport){
+            for (Notizia nsport : arraySport) {
                 TreeItem<String> itemTech = new TreeItem<String>(nsport.getTitolo());
                 viewTech.getChildren().add(itemTech);
             }
@@ -152,15 +153,16 @@ public class ControllerNotizieManager implements Initializable{
             throw new RuntimeException(e);
         }
         //questo blocco try riempie la TreeItem itemEconomia
-        try{
+        try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
             Gson gson = builder.create();
             FileReader fileread = new FileReader("NotizieEconomia.json");
             BufferedReader bufferedReader = new BufferedReader(fileread);
-            Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {
+            }.getType();
             this.arraySport = gson.fromJson(bufferedReader, mapType);
-            for(Notizia nsport:arraySport){
+            for (Notizia nsport : arraySport) {
                 TreeItem<String> itemEconomia = new TreeItem<String>(nsport.getTitolo());
                 viewEconomia.getChildren().add(itemEconomia);
             }
@@ -170,19 +172,14 @@ public class ControllerNotizieManager implements Initializable{
         }
 
 
-
-
-
-
-
         TreeView<String> treeView = new TreeView<String>(rootNode);
         treeView.setPrefWidth(400);
         treeView.setPrefHeight(300);
         //treeView.setEditable(true);
 
-        treeView.setCellFactory(new Callback<TreeView<String>,TreeCell<String>>(){
+        treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
             @Override
-            public TreeCell<String> call(TreeView<String> p){
+            public TreeCell<String> call(TreeView<String> p) {
                 return new ControllerNotizieManager.TextFieldTreeCellImpl();
             }
         });
@@ -222,8 +219,6 @@ public class ControllerNotizieManager implements Initializable{
         }
 
 
-
-
         @Override
         public void startEdit() {
             super.startEdit();
@@ -261,8 +256,8 @@ public class ControllerNotizieManager implements Initializable{
                     setText(getString());
                     setGraphic(getTreeItem().getGraphic());
                     if (
-                            getTreeItem().isLeaf()&&getTreeItem().getParent()!= null
-                    ){
+                            getTreeItem().isLeaf() && getTreeItem().getParent() != null
+                    ) {
                         setContextMenu(addMenu);
                     }
                 }
@@ -292,15 +287,12 @@ public class ControllerNotizieManager implements Initializable{
         }
 
 
-
-
     }
-
 
 
     //roba per navigare le pagine sul pannello
     public void switchToAutenticazioneAdmin(ActionEvent event) throws IOException {
-        if(!salvato) {
+        if (!salvato) {
             //pop-up di allarme, chiede se sei sicuro di voler fare il logout
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Salvataggio");
@@ -315,19 +307,19 @@ public class ControllerNotizieManager implements Initializable{
                 String css = this.getClass().getResource("application.css").toExternalForm();
                 scene.getStylesheets().add(css);
             }
-        }
-        else{
+        } else {
             Parent root = FXMLLoader.load(getClass().getResource("AutenticazioneAdmin.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             String css = this.getClass().getResource("application.css").toExternalForm();
-            scene.getStylesheets().add(css);        }
+            scene.getStylesheets().add(css);
+        }
     }
 
     public void switchToFeedManager(ActionEvent event) throws IOException {
         //pop-up di allarme, ti ricorda di salvare prima di cambiare pagina
-        if(!salvato) {
+        if (!salvato) {
             //pop-up di allarme, chiede se sei sicuro di voler fare il logout
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initStyle(StageStyle.UNDECORATED);
@@ -343,8 +335,7 @@ public class ControllerNotizieManager implements Initializable{
                 String css = this.getClass().getResource("application.css").toExternalForm();
                 scene.getStylesheets().add(css);
             }
-        }
-        else{
+        } else {
             Parent root = FXMLLoader.load(getClass().getResource("FeedManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -355,9 +346,9 @@ public class ControllerNotizieManager implements Initializable{
     }
 
 
-    public void switchToUserManager(ActionEvent event) throws IOException{
+    public void switchToUserManager(ActionEvent event) throws IOException {
         //pop-up di allarme, ti ricorda di salvare prima di cambiare pagina
-        if(!salvato) {
+        if (!salvato) {
             //pop-up di allarme, chiede se sei sicuro di voler fare il logout
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initStyle(StageStyle.UNDECORATED);
@@ -373,8 +364,7 @@ public class ControllerNotizieManager implements Initializable{
                 String css = this.getClass().getResource("application.css").toExternalForm();
                 scene.getStylesheets().add(css);
             }
-        }
-        else{
+        } else {
             Parent root = FXMLLoader.load(getClass().getResource("UserManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -383,8 +373,9 @@ public class ControllerNotizieManager implements Initializable{
             scene.getStylesheets().add(css);
         }
     }
+
     public void switchToCommentManager(ActionEvent event) throws IOException {
-        if(!salvato) {
+        if (!salvato) {
             //pop-up di allarme, chiede se sei sicuro di voler fare il logout
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Salvataggio");
@@ -399,24 +390,23 @@ public class ControllerNotizieManager implements Initializable{
                 String css = this.getClass().getResource("application.css").toExternalForm();
                 scene.getStylesheets().add(css);
             }
-        }
-        else{
+        } else {
             Parent root = FXMLLoader.load(getClass().getResource("CommentManager.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             String css = this.getClass().getResource("application.css").toExternalForm();
-            scene.getStylesheets().add(css);        }
+            scene.getStylesheets().add(css);
+        }
     }
 
 
-
-    public void nonSalvataggio(){
+    public void nonSalvataggio() {
         this.salvato = false;
         this.floppyDisk.setOpacity(1);
     }
 
-    public void salvataggio(MouseEvent event){
+    public void salvataggio(MouseEvent event) throws FileNotFoundException {
         salvato = true;
         this.floppyDisk.setOpacity(0.5);
         ArrayList<String> nuovaArraySport = new ArrayList<>();
@@ -425,118 +415,197 @@ public class ControllerNotizieManager implements Initializable{
         ArrayList<String> nuovaArrayTech = new ArrayList<>();
         ArrayList<String> nuovaArrayEconomia = new ArrayList<>();
 
-        for (TreeItem tastoCategoria:rootNode.getChildren()){
-            String testoTastoCategoria = tastoCategoria.getValue().toString();
-            for(int i=0; i<tastoCategoria.getChildren().size(); i++){
-                if(tastoCategoria.getValue().toString()=="Sport") {
-                    nuovaArraySport.add((tastoCategoria.getChildren().get(i)).toString());
-                    for (Notizia n : arraySport){
+
+        //per qualche motivo devo riempire tutte le vecchie array di nuovo perche' si svuotano
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            Gson gson = builder.create();
+            FileReader fileread = new FileReader("NotizieSport.json");
+            BufferedReader bufferedReader = new BufferedReader(fileread);
+            Type mapType = new TypeToken<ArrayList<Notizia>>() {}.getType();
+            arraySport = gson.fromJson(bufferedReader, mapType);
+
+            builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            gson = builder.create();
+            fileread = new FileReader("NotiziePolitica.json");
+            bufferedReader = new BufferedReader(fileread);
+            arrayPolitica = gson.fromJson(bufferedReader, mapType);
+
+            builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            gson = builder.create();
+            fileread = new FileReader("NotizieSpettacolo.json");
+            bufferedReader = new BufferedReader(fileread);
+            arraySpettacolo = gson.fromJson(bufferedReader, mapType);
+
+            builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            gson = builder.create();
+            fileread = new FileReader("NotizieTech.json");
+            bufferedReader = new BufferedReader(fileread);
+            arrayTech = gson.fromJson(bufferedReader, mapType);
+
+            builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            gson = builder.create();
+            fileread = new FileReader("NotizieEconomia.json");
+            bufferedReader = new BufferedReader(fileread);
+            arrayEconomia = gson.fromJson(bufferedReader, mapType);
+
+
+            for (TreeItem tastoCategoria : rootNode.getChildren()) {
+                String testoTastoCategoria = tastoCategoria.getValue().toString();
+                if (testoTastoCategoria.equalsIgnoreCase("Sport")) {
+                    for (int i = 0; i < tastoCategoria.getChildren().size(); i++) {
+                        TreeItem itemSport = (TreeItem) tastoCategoria.getChildren().get(i);
+                        nuovaArraySport.add(itemSport.getValue().toString());
+                    }
+
+                    for (Notizia n : arraySport) {
                         if (!nuovaArraySport.contains(n.getTitolo())) {
-                            arraySport.remove(n);
+                            notizieRimosse.add(n);
                         }
                     }
-                    try{
-                    GsonBuilder builder = new GsonBuilder();
-                    builder.setPrettyPrinting();
+                    arraySport.removeAll(notizieRimosse);
+                    try {
+                        builder = new GsonBuilder();
+                        builder.setPrettyPrinting();
+                        System.out.println("\n\n\n INTANTO TI STAMPO L'ARRAYSPORT");
+                        System.out.println(arraySport);
+                        gson = builder.create();
+                        FileWriter writer = new FileWriter("NotizieSport.json");
+                        String ilToJson = gson.toJson(arraySport);
+                        writer.write(ilToJson);
+                        writer.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (tastoCategoria.getValue().toString() == "Politica") {
+                    for (int i = 0; i < tastoCategoria.getChildren().size(); i++) {
+                        TreeItem itemPolitica = (TreeItem) tastoCategoria.getChildren().get(i);
+                        nuovaArrayPolitica.add(itemPolitica.getValue().toString());
+                    }
 
-                    Gson gson = builder.create();
-                    FileWriter writer = new FileWriter("NotizieSport.json");
-                    String ilToJson = gson.toJson(nuovaArraySport);
-                    writer.write(ilToJson);
-                    writer.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                }else if(tastoCategoria.getValue().toString()=="Politica"){
-                    nuovaArrayPolitica.add((tastoCategoria.getChildren().get(i)).toString());
-                    for (Notizia n : arrayPolitica){
+                    for (Notizia n : arrayPolitica) {
                         if (!nuovaArrayPolitica.contains(n.getTitolo())) {
-                            arrayPolitica.remove(n);
+                            notizieRimosse.add(n);
                         }
                     }
-                    try{
-                        GsonBuilder builder = new GsonBuilder();
+                    arrayPolitica.removeAll(notizieRimosse);
+                    try {
+                        builder = new GsonBuilder();
                         builder.setPrettyPrinting();
 
-                        Gson gson = builder.create();
+                        gson = builder.create();
                         FileWriter writer = new FileWriter("NotiziePolitica.json");
-                        String ilToJson = gson.toJson(nuovaArrayPolitica);
+                        String ilToJson = gson.toJson(arrayPolitica);
                         writer.write(ilToJson);
                         writer.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
 
-                }else if(tastoCategoria.getValue().toString()=="Spettacolo"){
-                    nuovaArraySpettacolo.add((tastoCategoria.getChildren().get(i)).toString());
-                    for (Notizia n : arraySpettacolo){
+                } else if (tastoCategoria.getValue().toString() == "Spettacolo") {
+                    for (int i = 0; i < tastoCategoria.getChildren().size(); i++) {
+                        TreeItem itemSpettacolo = (TreeItem) tastoCategoria.getChildren().get(i);
+                        nuovaArraySpettacolo.add(itemSpettacolo.getValue().toString());
+                    }
+
+                    for (Notizia n : arraySpettacolo) {
                         if (!nuovaArraySpettacolo.contains(n.getTitolo())) {
-                            arraySpettacolo.remove(n);
+                            notizieRimosse.add(n);
                         }
                     }
-                    try{
-                        GsonBuilder builder = new GsonBuilder();
+                    arraySpettacolo.removeAll(notizieRimosse);
+                    try {
+                        builder = new GsonBuilder();
                         builder.setPrettyPrinting();
 
-                        Gson gson = builder.create();
+                        gson = builder.create();
                         FileWriter writer = new FileWriter("NotizieSpettacolo.json");
-                        String ilToJson = gson.toJson(nuovaArraySpettacolo); //TODO vedere se pure qua serve la maletta del Type
+                        String ilToJson = gson.toJson(arraySpettacolo);
                         writer.write(ilToJson);
                         writer.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
 
-                }else if(tastoCategoria.getValue().toString()=="Tech"){
-                    nuovaArrayTech.add((tastoCategoria.getChildren().get(i)).toString());
-                    for (Notizia n : arrayTech){
+                } else if (tastoCategoria.getValue().toString() == "Tech") {
+                    for (int i = 0; i < tastoCategoria.getChildren().size(); i++) {
+                        TreeItem itemTech = (TreeItem) tastoCategoria.getChildren().get(i);
+                        nuovaArraySport.add(itemTech.getValue().toString());
+                    }
+
+                    for (Notizia n : arrayTech) {
                         if (!nuovaArrayTech.contains(n.getTitolo())) {
-                            arrayTech.remove(n);
+                            notizieRimosse.add(n);
                         }
                     }
-                    try{
-                        GsonBuilder builder = new GsonBuilder();
+                    arrayTech.removeAll(notizieRimosse);
+                    try {
+                        builder = new GsonBuilder();
                         builder.setPrettyPrinting();
 
-                        Gson gson = builder.create();
+                        gson = builder.create();
                         FileWriter writer = new FileWriter("NotizieTech.json");
-                        String ilToJson = gson.toJson(nuovaArrayTech); //TODO vedere se pure qua serve la maletta del Type
+                        String ilToJson = gson.toJson(arrayTech);
                         writer.write(ilToJson);
                         writer.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
 
-                }else if(tastoCategoria.getValue().toString()=="Economia"){
-                    nuovaArrayEconomia.add((tastoCategoria.getChildren().get(i)).toString());
-                    for (Notizia n : arrayEconomia){
+                } else if (tastoCategoria.getValue().toString() == "Economia") {
+                    for (int i = 0; i < tastoCategoria.getChildren().size(); i++) {
+                        TreeItem itemEconomia = (TreeItem) tastoCategoria.getChildren().get(i);
+                        nuovaArraySport.add(itemEconomia.getValue().toString());
+                    }
+
+                    for (Notizia n : arrayEconomia) {
                         if (!nuovaArrayEconomia.contains(n.getTitolo())) {
-                            arrayEconomia.remove(n);
+                            notizieRimosse.add(n);
                         }
                     }
-                }
-                try{
-                    GsonBuilder builder = new GsonBuilder();
-                    builder.setPrettyPrinting();
+                    arrayEconomia.removeAll(notizieRimosse);
+                    try {
+                        builder = new GsonBuilder();
+                        builder.setPrettyPrinting();
 
-                    Gson gson = builder.create();
-                    FileWriter writer = new FileWriter("NotizieEconomia.json");
-                    String ilToJson = gson.toJson(nuovaArrayEconomia); //TODO vedere se pure qua serve la maletta del Type
-                    writer.write(ilToJson);
-                    writer.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                        gson = builder.create();
+                        FileWriter writer = new FileWriter("NotizieEconomia.json");
+                        String ilToJson = gson.toJson(arrayEconomia);
+                        writer.write(ilToJson);
+                        writer.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
 
-        }
+            //scrittura finale per riempire NotizieRimosse.json
+            try {
+                builder = new GsonBuilder();
+                builder.setPrettyPrinting();
 
+                gson = builder.create();
+                FileWriter writer = new FileWriter("NotizieRimosse.json");
+                String ilToJson = gson.toJson(notizieRimosse);
+                writer.write(ilToJson);
+                writer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("manca uno dei file Json di Notizie");
+            throw new RuntimeException(e);
+        }
     }
 
-
-
-
-
-
 }
+
+
+
+

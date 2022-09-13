@@ -1,32 +1,266 @@
 [
-  "TreeItem [ value: Ad Oliver Stone il premio Fondazione Mimmo Rotella ]",
-  "TreeItem [ value: Se fate i bravi, docu su G8 di Genova, \u0027una ferita aperta\u0027 ]",
-  "TreeItem [ value: A Jafar Panahi il Premio speciale della giuria ]",
-  "TreeItem [ value: Barbero, \u0027Dante e quegli ultimi tredici canti del Paradiso\u0027 ]",
-  "TreeItem [ value: Borghi, la crisi del cinema mi fa soffrire ]",
-  "TreeItem [ value: Coppa Volpi femminile a Cate Blanchett ]",
-  "TreeItem [ value: Coppa Volpi maschile a Colin Farrell ]",
-  "TreeItem [ value: Gran premio della giuria al film Saint Omer ]",
-  "TreeItem [ value: Il film Leone d\u0027oro uscirà in sala in Italia ]",
-  "TreeItem [ value: Julianne Moore, Leone d\u0027oro è ancora donna, cinema sta cambiando ]",
-  "TreeItem [ value: Leone d\u0027argento a Luca Guadagnino ]",
-  "TreeItem [ value: Leone del futuro, migliore opera prima a Saint Omer ]",
-  "TreeItem [ value: Leone d\u0027oro all\u0027americano All the beauty and the bloodshed ]",
-  "TreeItem [ value: Migliore sceneggiatura all\u0027irlandese McDonagh ]",
-  "TreeItem [ value: Premio Mastroianni a Taylor Russell, attrice di Guadagnino ]",
-  "TreeItem [ value: Venezia, a Siccità di Virzì il Pasinetti 2022 ]",
-  "TreeItem [ value: Venezia, alla SIC vincono Eismayer, Anhell69 e Margini ]",
-  "TreeItem [ value: Venezia, Leone d\u0027oro a \u0027All The Beauty and the Bloodshed\u0027, d\u0027argento a Guadagnino. Premio speciale della giuria a Panahi ]",
-  "TreeItem [ value: Vera Gemma migliore attrice a Orizzonti ]",
-  "TreeItem [ value: Paura per Gina Lollobrigida, ricoverata per femore rotto ]",
-  "TreeItem [ value: Barbera, un palmares intelligente e coraggioso ]",
-  "TreeItem [ value: Harrison Ford: Indiana Jones 5 sarà mio ultimo ]",
-  "TreeItem [ value: Luca Guadagnino, amare è sempre un atto estremo ]",
-  "TreeItem [ value: Shira Haas nel nuovo \u0027Capitan America\u0027 ]",
-  "TreeItem [ value: Barbero, Dante e gli ultimi tredici canti del Paradiso ]",
-  "TreeItem [ value: Incassi: Minions ancora re, 2/o Il signore delle formiche ]",
-  "TreeItem [ value: \u0027Mahmood\u0027 in anteprima ad Alice nella città ]",
-  "TreeItem [ value: Matera città del cinema e delle fiction, ecco una mappa dei set ]",
-  "TreeItem [ value: Siena film festival omaggia Tognazzi, Pasolini e Gassman ]",
-  "TreeItem [ value: Spielberg, 75 anni di esperienza vita in The Fabelmans ]"
+  {
+    "titolo": "Coppa Volpi maschile a Colin Farrell",
+    "data": "Sep 10, 2022, 8:03:14 PM",
+    "description": "Per il film Gli spiriti dell\u0027isola di McDonagh",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/coppa-volpi-maschile-a-colin-farrell_617a1902-2f44-433c-9a97-c9173b84aeaa.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Gran premio della giuria al film Saint Omer",
+    "data": "Sep 10, 2022, 8:21:36 PM",
+    "description": "ha vinto anche il Leone del futuro per l\u0027opera prima.",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/gran-premio-della-giuria-al-film-saint-omer_47180431-6e12-44b0-8db2-d6f38ccf61b7.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Il film Leone d\u0027oro uscirà in sala in Italia",
+    "data": "Sep 10, 2022, 9:44:19 PM",
+    "description": "All the beauty and the Bloodshed distribuito da I Wonder",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/il-film-leone-doro-uscira-in-sala-in-italia_b2bd10fe-cc2b-4d98-a6b2-20ef026b1bc0.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Julianne Moore, Leone d\u0027oro è ancora donna, cinema sta cambiando",
+    "data": "Sep 10, 2022, 9:21:18 PM",
+    "description": "\"La scelta della Poitras? Il gusto è soggettivo\"",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/julianne-moore-leone-doro-e-ancora-donna-cinema-sta-cambiando_54cae20b-1052-4e87-b03f-ae9a90613f70.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Leone d\u0027argento a Luca Guadagnino",
+    "data": "Sep 10, 2022, 8:15:54 PM",
+    "description": "per il film BONES AND ALL",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/leone-dargento-a-luca-guadagnino_7cf9f0a9-1d26-4514-aa10-0adfb23cb65d.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Leone del futuro, migliore opera prima a Saint Omer",
+    "data": "Sep 10, 2022, 7:38:52 PM",
+    "description": "Il film di Alice Diop",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/leone-del-futuro-migliore-opera-prima-a-saint-omer_3059680d-3d2c-4bac-a1c6-474abd7547bf.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Leone d\u0027oro all\u0027americano All the beauty and the bloodshed",
+    "data": "Sep 10, 2022, 8:21:48 PM",
+    "description": "Documentario di Laura Poitras sulla fotografa Nan Goldin",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/leone-doro-allamericano-all-the-beauty-and-the-bloodshed_4c98c501-d0a2-4b88-987f-68a22ab5fd31.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Migliore sceneggiatura all\u0027irlandese McDonagh",
+    "data": "Sep 10, 2022, 8:11:30 PM",
+    "description": "Per il film Gli spiriti dell\u0027isola",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/migliore-sceneggiatura-allirlandese-mcdonagh_68fda8bd-a0bc-45fc-a48c-a1cceb50841b.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Premio Mastroianni a Taylor Russell, attrice di Guadagnino",
+    "data": "Sep 10, 2022, 7:58:51 PM",
+    "description": "Per il film Bones and All",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/premio-mastroianni-a-taylor-russell-attrice-di-guadagnino_fbddb6b8-42a1-4868-86d2-1d033056dedf.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Venezia, a Siccità di Virzì il Pasinetti 2022",
+    "data": "Sep 10, 2022, 5:18:30 PM",
+    "description": "Al film fuori concorso il premio del SNGCI",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/venezia-a-siccita-di-virzi-il-pasinetti-2022_3a7b3006-453a-4311-adf0-2aaacfdb6cb4.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Venezia, alla SIC vincono Eismayer, Anhell69 e Margini",
+    "data": "Sep 10, 2022, 5:10:36 PM",
+    "description": "I verdetti della Settimana Internazionale della Critica",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/venezia-alla-sic-vincono-eismayer-anhell69-e-margini_cc4137e4-3fcf-4e1f-8cf4-6c0081fcc97a.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Venezia, Leone d\u0027oro a \u0027All The Beauty and the Bloodshed\u0027, d\u0027argento a Guadagnino. Premio speciale della giuria a Panahi",
+    "data": "Sep 11, 2022, 7:04:29 PM",
+    "description": "Leone d\u0027oro a Laura Poitras. Coppe Volpi a Blanchett e Farrell ",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/venezia-leone-doro-a-all-the-beauty-and-the-bloodshed-dargento-a-guadagnino.-premio-speciale-della-giuria-a-panahi_c8fe5e31-4568-4b9f-ad29-cdb5460fb3cf.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Vera Gemma migliore attrice a Orizzonti",
+    "data": "Sep 10, 2022, 8:22:50 PM",
+    "description": "Per il film \u0027Vera\u0027",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/10/vera-gemma-migliore-attrice-a-orizzonti_2c811984-1a71-4389-91e0-91d65c3ce78c.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Paura per Gina Lollobrigida, ricoverata per femore rotto",
+    "data": "Sep 11, 2022, 7:59:47 PM",
+    "description": "L\u0027attrice ha 95 anni, domani sarà operata",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/11/aura-per-gina-lollobrigida-ricoverata-per-femore-rotto_906b20ad-dd20-4df5-bb71-632235141a56.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Barbera, un palmares intelligente e coraggioso",
+    "data": "Sep 11, 2022, 7:57:39 PM",
+    "description": "Mostra stimolo per ritorno in sala, Italia ne esce bene",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/11/barbera-un-palmares-intelligente-e-coraggioso_e7a2ddcf-bc98-48d2-9d1e-afc98621833b.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Harrison Ford: Indiana Jones 5 sarà mio ultimo",
+    "data": "Sep 11, 2022, 7:51:39 PM",
+    "description": "Star al fun club della Disney dove debutta il primo trailer",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/11/harrison-ford-indiana-jones-5-sara-mio-ultimo_ed57e52b-1803-4672-8bbb-c862a86f7cc9.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Luca Guadagnino, amare è sempre un atto estremo",
+    "data": "Sep 11, 2022, 7:56:36 PM",
+    "description": "L\u0027Oscar? Il Leone d\u0027argento è già un sogno realizzato",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/11/luca-guadagnino-amare-e-sempre-un-atto-estremo_4b9db6e9-8ac2-4955-b87a-1db0e621d1a2.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Shira Haas nel nuovo \u0027Capitan America\u0027",
+    "data": "Sep 11, 2022, 12:23:37 PM",
+    "description": "Da \u0027Unorthodox\u0027 alla superoina \u0027Sabra\u0027 nel film della Marvel",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/11/shira-haas-nel-nuovo-capitan-america_293106c6-367a-4286-8478-fb2dc0360366.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Barbero, Dante e gli ultimi tredici canti del Paradiso",
+    "data": "Sep 12, 2022, 4:02:38 PM",
+    "description": "In sala dal 29/9 il film di Avati sul poeta, \"parla ai giovani\"",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/barbero-dante-e-gli-ultimi-tredici-canti-del-paradiso_751a9ea2-4f55-4a86-9e34-86a3f3cf582a.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Incassi: Minions ancora re, 2/o Il signore delle formiche",
+    "data": "Sep 12, 2022, 11:26:35 AM",
+    "description": "Incassi in calo, debutta ottavo Margini di Niccolò Falsetti",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/incassi-minions-ancora-re-2/o-il-signore-delle-formiche_1d0e6303-9c75-482f-9b0a-b944089abf13.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "\u0027Mahmood\u0027 in anteprima ad Alice nella città",
+    "data": "Sep 12, 2022, 5:52:49 PM",
+    "description": "Docufilm su musicista in sala dal 17 al 19/10 con Nexo Digital",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/mahmood-in-anteprima-ad-alice-nella-citta_ef0f5042-1e3f-4f9a-a6d9-61c30cd47ac6.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Matera città del cinema e delle fiction, ecco una mappa dei set",
+    "data": "Sep 12, 2022, 12:39:59 PM",
+    "description": "Da The Passion a Imma Tataranni. Presentata l\u0027app",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/matera-citta-del-cinema-e-delle-fiction-ecco-una-mappa-dei-set_f2619319-0bfa-407f-9681-6cf4f6207e06.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Siena film festival omaggia Tognazzi, Pasolini e Gassman",
+    "data": "Sep 12, 2022, 6:31:29 PM",
+    "description": "20 opere inedite, 30 corti,giovani autori, progetto con ospedale",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/siena-film-festival-omaggia-tognazzi-pasolini-e-gassman_03f883dc-9d95-482e-940d-4556c270eb95.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  },
+  {
+    "titolo": "Spielberg, 75 anni di esperienza vita in The Fabelmans",
+    "data": "Sep 12, 2022, 7:40:54 PM",
+    "description": "A Toronto con suo film più personale, \u0027non penso a ritirarmi\u0027",
+    "author": "",
+    "link": "https://www.ansa.it/sito/notizie/cultura/cinema/2022/09/12/spielberg-75-anni-di-esperienza-vita-in-the-fabelmans_cfd42118-d20a-4a6b-86ec-d63e26b705ad.html",
+    "feedbacks": {
+      "commenti": [],
+      "voti": {}
+    }
+  }
 ]
