@@ -25,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.io.FileNotFoundException;
@@ -240,6 +241,13 @@ public class ControllerUserManager implements Initializable{
             stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
             stage.setResizable(false);
             stage.show();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent e) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
 
         } catch (IOException e) {
             System.out.println("Errore nel caricare ModificaUtente.fxml");
@@ -261,6 +269,13 @@ public class ControllerUserManager implements Initializable{
             stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
             stage.setResizable(false);
             stage.show();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent e) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
 
         } catch (IOException e) {
             System.out.println("Errore nel caricare ModificaUtente.fxml");

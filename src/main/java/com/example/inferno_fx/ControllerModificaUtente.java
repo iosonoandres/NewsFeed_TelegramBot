@@ -2,7 +2,9 @@ package com.example.inferno_fx;
 
 import com.example.inferno_fx.OperazioniJSON.Utente;
 import com.example.inferno_fx.OperazioniJSON.gestoreGsonUtente;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.net.URL;
@@ -118,14 +121,18 @@ public class ControllerModificaUtente implements Initializable {
             stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
             stage.setResizable(false);
             stage.show();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent e) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
 
         } catch (IOException e) {
             System.out.println("Errore nel caricare UserManager.fxml");
             throw new RuntimeException(e);
         }
-        //commento per commit
-
-
     }
 
 
