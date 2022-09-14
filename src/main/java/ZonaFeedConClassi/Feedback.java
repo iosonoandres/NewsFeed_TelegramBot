@@ -8,14 +8,13 @@ import java.util.HashMap;
 public class Feedback implements Comparable//la classe feedback contiene tutte le informazioni necessarie da associare ad un link della notizia
 {
     //potrei mettere un private String linkAssociatoAlFeedback oppure mettere il link come key nella mappa del gestoreFeedback, ho fatto la seconda per ora
-    //TODO queste due sotto vanno mappe non arraylist
     private ArrayList<String> commenti;
     //nome utente + ": " + commento
     //associa una stringa utente a diversi commenti. al posto di arraylist potremmo mettere un oggetto così salviamo anche la data del commento
     private HashMap<String,Integer> voti; //qui ho fatto che i voti sono anonimi idk
 
-    public Feedback(String username) {} //TODO
-    public Feedback() //costruttore vuoto (TODO gestire feedback null)
+    public Feedback(String username) {}
+    public Feedback()
     {
         this.commenti=new ArrayList<>();
         this.voti=new HashMap<>();
@@ -38,7 +37,4 @@ public class Feedback implements Comparable//la classe feedback contiene tutte l
             return 1;
         }
     }
-
-
-    //TUTTO QUESTO è FEEDBACK
 }

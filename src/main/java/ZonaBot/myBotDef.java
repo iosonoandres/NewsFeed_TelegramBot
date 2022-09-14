@@ -146,6 +146,13 @@ public class myBotDef extends TelegramLongPollingBot {
             if(call_data.equals("chiamataSport")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
+
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Sport");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
                 feedDinamico= new FeedObj(nuovo.get(posizioneRandomInFeed), "NotizieSport.json");
@@ -165,6 +172,13 @@ public class myBotDef extends TelegramLongPollingBot {
             }
             if(call_data.equals("chiamataPolitica")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
+
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Politica");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
@@ -188,6 +202,13 @@ public class myBotDef extends TelegramLongPollingBot {
             if(call_data.equals("chiamataEconomia")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
+
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Economia");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
                 feedDinamico= new FeedObj(nuovo.get(posizioneRandomInFeed), "NotizieEconomia.json");
@@ -209,6 +230,13 @@ public class myBotDef extends TelegramLongPollingBot {
             if(call_data.equals("chiamataTech")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
+
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Tech");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
                 feedDinamico= new FeedObj(nuovo.get(posizioneRandomInFeed), "NotizieTech.json");
@@ -229,6 +257,13 @@ public class myBotDef extends TelegramLongPollingBot {
 
             if(call_data.equals("chiamataSpettacolo")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
+
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Spettacolo");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
@@ -267,7 +302,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 SendMessage chiediRisposta = new SendMessage();
                 chiediRisposta.setChatId(String.valueOf(chat_idone));
                 chiediRisposta.setText("per commentare la notizia rispondi al messaggio ");
-                verifica = true; //TODO cambiare verifica in un nome che si capisca meglio
+                verifica = true;
 
 
                 try{
@@ -762,10 +797,9 @@ public class myBotDef extends TelegramLongPollingBot {
                     }
                 }
 
-
-
                 if (update.getMessage().getText().equals("/sceglicategoria"))
                 {
+
                     try
                     {
                         ArrayList<Utente> listaTemporaneaU=gestoreDegliUtenti.readJsonLista();
@@ -822,7 +856,6 @@ public class myBotDef extends TelegramLongPollingBot {
                         perInput.add(rispostaEconomia);
                         perInput.add(rispostaTech);
 
-                        //TODO cos'è sendphoto qua sotto??
                         SendPhoto nomeSendPhoto = SendPhoto.builder().chatId(String.valueOf(chat_id)).photo(new InputFile("https://www.theverge.com/2022/2/15/22935080/facebook-meta-news-feed-renaming-branding-political-content-misinformation")).build();
                         nomeSendPhoto.setReplyMarkup(creatoreRowsInLine(perInput));
                         execute(nomeSendPhoto);
@@ -847,12 +880,12 @@ public class myBotDef extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "fire_24_bot";
+        return "fire_news24bot";
     }
 
     @Override
     public String getBotToken() {
-        return "5363385439:AAFiXF0YlWivjIrc1SCwok2va-_fdJvNM8A";
+        return "5621877610:AAHtp7m9GFmzbttQHcoitqfUueA6VKaEVpo";
     }
 
 }

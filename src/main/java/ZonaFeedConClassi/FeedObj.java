@@ -27,7 +27,7 @@ public class FeedObj {
     {
         try
         {
-            newsList = new TreeSet<Notizia>();
+            newsList = new TreeSet<>();
             SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(sourceURL)));
             List<SyndEntry> entries = feed.getEntries();
             Iterator<SyndEntry> itEntries = entries.iterator();
@@ -51,7 +51,7 @@ public class FeedObj {
         listaFeedback = new GestoreFeedback(); //LISTA = GESTOREFEEDBACK
 
         //2) leggo le notizie salvate da file e le metto in una lista Temporanea
-        ArrayList<Notizia> listaNotizieSalvate = new ArrayList<Notizia>();
+        ArrayList<Notizia> listaNotizieSalvate = new ArrayList<>();
         try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
@@ -136,9 +136,7 @@ public class FeedObj {
         }
         else
         {
-            //TODO bisognerebbe fare send message che ha finito, vab metto system output for now
-            System.out.println("notizie finite! scelga un altro feed pls");
-            return null; //TODO non va bene sicuro
+            return null;
         }
         //else gli diamo errore o ricominciamo ad iterare dall'inizio? per ora gli diciamo che son finite le notizie del feed
     }
