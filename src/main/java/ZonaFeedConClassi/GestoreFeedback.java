@@ -60,7 +60,6 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
 
         Gson gson = builder.create();
         FileReader fileread=new FileReader("notizieCommentate.json");
-        Scanner tentaprova=new Scanner("notizieCommentate.json");
         BufferedReader bufferedReader = new BufferedReader(fileread);
         System.out.println("GestoreFeedback: a quanto pare il file non è vuoto");
         Type mapType = new TypeToken<TreeMap<String, Feedback>>(){}.getType();
