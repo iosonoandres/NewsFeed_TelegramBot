@@ -8,21 +8,19 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import org.xml.sax.InputSource;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class FeedObj {
 
     public TreeSet<Notizia> newsList; //FIFO
     private Iterator<Notizia> iteratore;
     private Notizia currentNotizia; //sarà una variabile per reference
-    private GestoreFeedback lista; //lista notizie già commentate
+    private GestoreFeedback listaFeedback; //lista notizie già commentate
     private String nomeFile;
 
     public FeedObj(String sourceURL, String nomeFile) //TODO secondo me dobbiamo passargli anche l'utente come variabile, feedObj non deve avere necessariamente avere un private Utente tho
@@ -49,10 +47,10 @@ public class FeedObj {
     }
 
     public void GenerateNewsList(Iterator<SyndEntry> itEntries) {
-        //leggo il file delle notizie commentate e le inserisco in una mappa
-        lista = new GestoreFeedback(); //LISTA = GESTOREFEEDBACK
+        //1) leggo il file delle notizie commentate e le inserisco in una mappa
+        listaFeedback = new GestoreFeedback(); //LISTA = GESTOREFEEDBACK
 
-        //leggo le notizie salvate da file e le metto in una lista Temporanea
+        //2) leggo le notizie salvate da file e le metto in una lista Temporanea
         ArrayList<Notizia> listaNotizieSalvate = new ArrayList<Notizia>();
         try {
             GsonBuilder builder = new GsonBuilder();
@@ -62,14 +60,12 @@ public class FeedObj {
             BufferedReader bufferedReader = new BufferedReader(fileread);
             Type mapType = new TypeToken<ArrayList<Notizia>>(){}.getType();
             listaNotizieSalvate = gson.fromJson(bufferedReader, mapType);
+            System.out.println("DEBUG: feedobj ha letto e scritto le notizie su listatemporanea");
         } catch (FileNotFoundException e) {
-            System.out.println("FeedObj non ha trovato nessun file, presumiamo sia vuoto");
+            System.out.println("DEBUG: FeedObj non ha trovato nessun file, presumiamo sia vuoto");
         }
-        //vediamo se legge
-        System.out.println("CIAO STO LEGGENDO: ECCO:");
-        //System.out.println(listaNotizieSalvate.get(0).getTitolo());
-        //genero una lista di news nuove togliendo quelle che sono nel file delle notizie rimosse
-        ArrayList<String> listaNotizieRimosse=new ArrayList<String>();
+        //3) genero una lista di news nuove togliendo quelle che sono nel file delle notizie rimosse
+        ArrayList<Notizia> listaNotizieRimosse=new ArrayList<>();
         try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting();
@@ -89,9 +85,8 @@ public class FeedObj {
             {
                 newsList.add(new Notizia(entry.getTitle(), entry.getPublishedDate(), entry.getDescription(), entry.getAuthor(), entry.getLink()));
             }
-
-
         }
+        System.out.println();
         //unisco notizie nuove con notizie vecchie, facendo l'ennesimo while santa maria
         for(Notizia s:listaNotizieSalvate)
         {
@@ -117,11 +112,11 @@ public class FeedObj {
 
         //ora altro ciclo: se la lista delle notizie commentate ha come key il link, allora possiamo aggiungere il feedback alla notizia appena generata
         for (Notizia N : newsList) {
-            if (lista.getListaNotizieCommentate().containsKey(N.getLink())) {
+            if (listaFeedback.getListaNotizieCommentate().containsKey(N.getLink())) {
                 System.out.println("il porco dio di lista è una mappa: ");
-                System.out.println("mappa: " + lista.getListaNotizieCommentate());
-                System.out.println("ora solo il value: " + lista.getListaNotizieCommentate().get(N.getLink()));
-                Feedback f = (lista.getListaNotizieCommentate()).get(N.getLink());
+                System.out.println("mappa: " + listaFeedback.getListaNotizieCommentate());
+                System.out.println("ora solo il value: " + listaFeedback.getListaNotizieCommentate().get(N.getLink()));
+                Feedback f = (listaFeedback.getListaNotizieCommentate()).get(N.getLink());
                 newsList.last().setFeedback(f); //first o last???????
                 System.out.println("è stato trovato un feedback e in teoria l'ho aggiunto alla notizia che stavo generando");
             }
@@ -136,13 +131,14 @@ public class FeedObj {
         if (iteratore.hasNext())
         {
             this.currentNotizia=iteratore.next();
+            System.out.println(currentNotizia.getTitolo());
             return this.currentNotizia;
         }
         else
         {
             //TODO bisognerebbe fare send message che ha finito, vab metto system output for now
             System.out.println("notizie finite! scelga un altro feed pls");
-            return null;
+            return null; //TODO non va bene sicuro
         }
         //else gli diamo errore o ricominciamo ad iterare dall'inizio? per ora gli diciamo che son finite le notizie del feed
     }
@@ -152,5 +148,5 @@ public class FeedObj {
     {
         return newsList;
     }
-    public GestoreFeedback getGestoreFeedBack() {return lista;}
+    public GestoreFeedback getGestoreFeedBack() {return listaFeedback;}
 }

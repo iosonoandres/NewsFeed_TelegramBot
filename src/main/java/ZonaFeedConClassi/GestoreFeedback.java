@@ -3,8 +3,10 @@ package ZonaFeedConClassi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.lang.reflect.Type;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -22,22 +24,25 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
             this.leggiDaFile();
         } catch (FileNotFoundException e)
         {
-            System.out.println("il file non esiste si gode");
             this.listaNotizieCommentate=new TreeMap<>();
         }
     }
-    public void salvaSuFile() throws IOException
+    public void salvaSuFile()
     {
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
+        try
+        {
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
 
-        Gson gson = builder.create();
-        FileWriter writer = new FileWriter("notizieCommentate.json");
-        String ilToJson = gson.toJson(listaNotizieCommentate); //TODO vedere se pure qua serve la maletta del Type
-        writer.write(ilToJson);
-        writer.close();
+            Gson gson = builder.create();
+            FileWriter writer = new FileWriter("notizieCommentate.json");
+            String ilToJson = gson.toJson(listaNotizieCommentate);
+            writer.write(ilToJson);
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
     public void salvaSuFile(TreeMap<String, Feedback> mappa) throws IOException
     {
         GsonBuilder builder = new GsonBuilder();
@@ -49,9 +54,6 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
         writer.write(ilToJson);
         writer.close();
     }
-
-
-
     public void leggiDaFile() throws FileNotFoundException {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
@@ -70,17 +72,19 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
     public TreeMap<String, Feedback> getListaNotizieCommentate() {return this.listaNotizieCommentate;}
 
     //i metodi aggiungicommento e voto vanno qui perchè così gestorefeedback li mette sia nel file di tutte le notizie commentate sia nell'oggetto feedback
-    public void aggiungiCommento(Notizia n, String user, String commento) throws IOException {
+    public Notizia aggiungiCommento(Notizia n, String user, String commento) throws IOException {
         n.getFeedback().getCommenti().add(user+": "+commento);
-        listaNotizieCommentate.put(n.getLink(), n.getFeedback());
+        this.listaNotizieCommentate.put(n.getLink(), n.getFeedback());
 
         salvaSuFile();
+        return n;
     }
-    public void aggiungiVoto(Notizia n, String user, int voto) throws IOException {
+    public Notizia aggiungiVoto(Notizia n, String user, int voto) throws IOException {
         n.getFeedback().getVoti().put(user, voto); //modifica il voto se metto un voto in una key che ha già un value??
         listaNotizieCommentate.put(n.getLink(), n.getFeedback());
 
         salvaSuFile();
+        return n;
     }
 
     public String outputFeedbackCommenti(Notizia N)
@@ -101,6 +105,8 @@ public class GestoreFeedback //situazione tipo notizia-feedobj: feedback è un e
             somma+=v;
             numeri++;
         }
+        if (numeri==0)
+        {return 0;}
         double media=somma/numeri;
         return media;
     }

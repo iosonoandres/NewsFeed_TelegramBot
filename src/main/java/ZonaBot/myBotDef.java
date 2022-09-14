@@ -1,26 +1,21 @@
 package ZonaBot;
 
 import ZonaAmministratore.Categorie;
-import ZonaFeedConClassi.FeedObj;
-import ZonaFeedConClassi.GestoreFeedback;
-import ZonaFeedConClassi.Utente;
-import ZonaFeedConClassi.gestoreGsonUtentone;
+import ZonaFeedConClassi.*;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.polls.SendPoll;
 import org.telegram.telegrambots.meta.api.methods.send.SendDice;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class myBotDef extends TelegramLongPollingBot {
 
@@ -31,8 +26,6 @@ public class myBotDef extends TelegramLongPollingBot {
     private gestoreGsonUtentone gestoreDegliUtenti=new gestoreGsonUtentone();
 
     private Utente utenteTemporaneo= new Utente(null,null,false, 0);
-
-    private boolean usabile;
     private boolean verifica;
     private boolean registrazione;
     private boolean confermaRegistrazione;
@@ -46,7 +39,8 @@ public class myBotDef extends TelegramLongPollingBot {
 
 
 
-    public static SendMessage login(SendMessage S){
+
+    public static SendMessage tastiLogin(SendMessage S){
         InlineKeyboardButton rispostaUno = new InlineKeyboardButton();
         InlineKeyboardButton rispostaDue = new InlineKeyboardButton();
         rispostaUno.setText("Non sono registrato 🫤");
@@ -95,27 +89,24 @@ public class myBotDef extends TelegramLongPollingBot {
 
         rowsInline.add(rowInline);
         rowsInline.add(rowInlineDue);
-        // Add it to the message
         daRestituire.setKeyboard(rowsInline);
         return daRestituire;
     }
-
-    // public static
 
 
     public static ArrayList<InlineKeyboardButton> creatorePulsantiNotizia(){
         InlineKeyboardButton rispostaVoto = new InlineKeyboardButton();
         rispostaVoto.setText("Vota ⭐️");
-        rispostaVoto.setCallbackData("votonissimo");
+        rispostaVoto.setCallbackData("chiamataVoto");
 
 
         InlineKeyboardButton rispostaLasciaUnCommento = new InlineKeyboardButton();
         rispostaLasciaUnCommento.setText("Commenta 💡");
-        rispostaLasciaUnCommento.setCallbackData("commentissimo");
+        rispostaLasciaUnCommento.setCallbackData("chiamataCommento");
 
         InlineKeyboardButton rispostaNuovaNotizia = new InlineKeyboardButton();
         rispostaNuovaNotizia.setText("Nuova news 📸");
-        rispostaNuovaNotizia.setCallbackData("nuovissima");
+        rispostaNuovaNotizia.setCallbackData("chiamataNuovaNotizia");
 
         InlineKeyboardButton rispostaCommentiVari = new InlineKeyboardButton();
         rispostaCommentiVari.setText("Commenti on 🌍");
@@ -143,8 +134,8 @@ public class myBotDef extends TelegramLongPollingBot {
 
     @Override
 
-    public void onUpdateReceived(Update update) {
-
+    public void onUpdateReceived(Update update)
+    {
 
         if (update.hasCallbackQuery()){
 
@@ -152,14 +143,13 @@ public class myBotDef extends TelegramLongPollingBot {
             long message_id = update.getCallbackQuery().getMessage().getMessageId();
             long chat_idone = update.getCallbackQuery().getMessage().getChatId();
 
-            if(call_data.equals("sportissimo")){
+            if(call_data.equals("chiamataSport")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Sport");
                 int posizioneRandomInFeed = (int) (Math.random()*nuovo.size());
                 feedDinamico= new FeedObj(nuovo.get(posizioneRandomInFeed), "NotizieSport.json");
-
-                String contenuto= feedDinamico.getNuovaNotizia().getLink();
+                String contenuto=feedDinamico.getNuovaNotizia().getLink();
                 SendMessage notiziaSportiva = new SendMessage(String.valueOf(chat_idone), contenuto);
                 notiziaSportiva.setReplyMarkup(creatoreRowsInLine(perInput));
 
@@ -173,7 +163,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
 
             }
-            if(call_data.equals("politicissima")){
+            if(call_data.equals("chiamataPolitica")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Politica");
@@ -195,7 +185,7 @@ public class myBotDef extends TelegramLongPollingBot {
 
             }
 
-            if(call_data.equals("soldissimo")){
+            if(call_data.equals("chiamataEconomia")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Economia");
@@ -216,7 +206,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
             }
 
-            if(call_data.equals("techissimo")){
+            if(call_data.equals("chiamataTech")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Tech");
@@ -237,7 +227,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
             }
 
-            if(call_data.equals("spettacolissimo")){
+            if(call_data.equals("chiamataSpettacolo")){
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
                 ArrayList<String> nuovo = categorieDisponibili.listaUrl("Spettacolo");
@@ -258,7 +248,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
             }
 
-            if (call_data.equals("votonissimo")) {
+            if (call_data.equals("chiamataVoto")) {
                 SendMessage N = new SendMessage();
                 N.setChatId(chat_idone);
                 N.setText("aggiungi o modifica il tuo voto che deve esser compreso tra 0 e 10");
@@ -272,7 +262,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
             }
 
-            if (call_data.equals("commentissimo")) {
+            if (call_data.equals("chiamataCommento")) {
 
                 SendMessage chiediRisposta = new SendMessage();
                 chiediRisposta.setChatId(String.valueOf(chat_idone));
@@ -287,11 +277,25 @@ public class myBotDef extends TelegramLongPollingBot {
                 }
             }
 
-            if (call_data.equals("nuovissima")) {
+            if (call_data.equals("chiamataNuovaNotizia"))
+            {
 
                 ArrayList<InlineKeyboardButton> perInput = creatorePulsantiNotizia();
 
-                this.linkNuova = feedDinamico.getNuovaNotizia().getLink();
+                DeleteMessage deleteMessage = new DeleteMessage(String.valueOf(chat_idone), (int)message_id);
+                try {
+                    execute(deleteMessage);
+                }catch(TelegramApiException tae) {
+                    throw new RuntimeException(tae);
+                }
+
+                try
+                {
+                    this.linkNuova=feedDinamico.getNuovaNotizia().getLink();
+                }catch(NullPointerException e){
+                    this.linkNuova="Lista di notizie terminate! scegli una nuova categoria per proseguire";
+                }
+
                 SendMessage nuovaNotiziaMessaggio = new SendMessage(String.valueOf(chat_idone), linkNuova);
                 nuovaNotiziaMessaggio.setReplyMarkup(creatoreRowsInLine(perInput));
 
@@ -312,7 +316,7 @@ public class myBotDef extends TelegramLongPollingBot {
                     if(controlloId==true)
                     {
                         //"sei già registrato"
-                        SendMessage S=new SendMessage(String.valueOf(chat_idone), "te sei già registrato che cazzo ti registri a fare");
+                        SendMessage S=new SendMessage(String.valueOf(chat_idone), "il suo account associato al suo utente telegram è già registrato, utilizzare il comando /login per proseguire");
                         try
                         {
                             execute(S);
@@ -416,7 +420,6 @@ public class myBotDef extends TelegramLongPollingBot {
                             {
                                 u.setOnline(false);
                                 gestoreDegliUtenti.writeJson(listaTemporanea);
-                                System.out.println("DEBUG: ho fatto logout aye aye");
                                 break;
                             }
                         }
@@ -441,7 +444,7 @@ public class myBotDef extends TelegramLongPollingBot {
                     risposta.setText("Utente, sei gia registrato o ti devi registrare? 😯");
                     risposta.setChatId(String.valueOf(chat_id));
 
-                    SendMessage rispostaNuova = login(risposta);
+                    SendMessage rispostaNuova = tastiLogin(risposta);
 
                     try{
                         execute(messaggioDiBenvenuto);
@@ -513,7 +516,7 @@ public class myBotDef extends TelegramLongPollingBot {
                             {
                                 u.setOnline(false);
                                 gestoreDegliUtenti.writeJson(listaTemporanea);
-                                System.out.println("DEBUG: ho fatto logout aye aye");
+                                SendMessage S=new SendMessage(String.valueOf(chat_id), "logout effettuato correttamente. Per utilizzare nuovamente il bot, usare il comando /login");
                                 break;
                             }
                         }
@@ -533,7 +536,7 @@ public class myBotDef extends TelegramLongPollingBot {
                         ArrayList<Utente> listaTemporaneaU=gestoreDegliUtenti.readJsonLista();
                         if (listaTemporaneaU.size()==0)
                         {
-                            SendMessage S=new SendMessage(String.valueOf(chat_id), "AH! non esiste nessun utente registrato cosa ti faccio entrate");
+                            SendMessage S=new SendMessage(String.valueOf(chat_id), "Sembra che il tuo utente telegram non sia associato ad un account. Per utilizzare il bot, usare il comando /signup");
                             execute(S);
                             return;
                         }
@@ -543,7 +546,7 @@ public class myBotDef extends TelegramLongPollingBot {
                             {
                                 if(u.getOnline()==false)
                                 {
-                                    SendMessage S=new SendMessage(String.valueOf(chat_id), "AH! te mica sei loggato bitch");
+                                    SendMessage S=new SendMessage(String.valueOf(chat_id), "Non hai effettuato l'accesso; per usufruire dei servizi del bot, usare il comando /login");
                                     try
                                     {
                                         execute(S);
@@ -558,7 +561,7 @@ public class myBotDef extends TelegramLongPollingBot {
                         SendMessage messaggioInformativo = new SendMessage();
                         messaggioInformativo.setChatId(String.valueOf(chat_id));
                         messaggioInformativo.setText("Ecco alcune informazioni utili: ️" + "\n" + "\n"+
-                                "comando /sceglicategoria : usalo per cambiare la tua categoria di interesse 🎲"
+                                "comando /sceglicategoria : usalo per generare notizie in base alla tua categoria di interesse 🎲"
                                 + "\n"+
                                 "\n"+
                                 "comando /login : usalo per autenticarti in FireNews 🫶🏻"
@@ -709,7 +712,7 @@ public class myBotDef extends TelegramLongPollingBot {
                 if(verifica==true) //COMMENTI
                 {
                     try {
-                        gestoreDeiFeedback.aggiungiCommento(feedDinamico.getCurrentNotizia(), nomeUtente, message_text); //qua dentro la parentesi i comandi magici per prendere il commento e l'user
+                        gestoreDeiFeedback.aggiungiCommento(feedDinamico.getCurrentNotizia(), nomeUtente, message_text);
                         SendMessage verificona = new SendMessage();
                         verificona.setChatId(String.valueOf(chat_id));
                         verificona.setText("Commento aggiunto correttamente 💘 ");
@@ -726,11 +729,24 @@ public class myBotDef extends TelegramLongPollingBot {
                 if(confermaVoto==true){
                     try {
                         int voto = Integer.parseInt(update.getMessage().getText());
-                        if(voto>=0 && voto <=10){
+                        if(voto>=0 && voto <=10) //il voto è compreso tra 0 e 10
+                        {
                             gestoreDeiFeedback.aggiungiVoto(feedDinamico.getCurrentNotizia(), nomeUtente, Integer.parseInt(update.getMessage().getText()));
                             SendMessage S = new SendMessage();
                             S.setChatId(chat_id);
                             S.setText("Voto aggiunto correttamente 📈");
+
+                            try{
+                                execute(S);
+                            } catch (TelegramApiException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                        else //il voto non è accettabile
+                        {
+                            SendMessage S=new SendMessage();
+                            S.setChatId(chat_id);
+                            S.setText("il voto inserito non è compreso tra 0 e 10");
 
                             try{
                                 execute(S);
@@ -755,7 +771,7 @@ public class myBotDef extends TelegramLongPollingBot {
                         ArrayList<Utente> listaTemporaneaU=gestoreDegliUtenti.readJsonLista();
                         if (listaTemporaneaU.size()==0)
                         {
-                            SendMessage S=new SendMessage(String.valueOf(chat_id), "AH! non esiste nessun utente registrato cosa ti faccio entrate");
+                            SendMessage S=new SendMessage(String.valueOf(chat_id), "per poter utilizzare questo comando è necessario effettuare l'accesso, utilizza il comando /signup per iniziare");
                             execute(S);
                             return;
                         }
@@ -766,38 +782,38 @@ public class myBotDef extends TelegramLongPollingBot {
                             {
                                 if(u.getOnline()==false)
                                 {
-                                    SendMessage S=new SendMessage(String.valueOf(chat_id), "AH! te mica sei loggato bitch");
+                                    SendMessage S=new SendMessage(String.valueOf(chat_id), "Sembra che il tuo utente sia già stato registrato in precedenza; per poter utilizzare questo comando è necessario eseguire l'accesso con il comando /login");
                                     try
                                     {
                                         execute(S);
                                     } catch (TelegramApiException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    return; //?????? right
+                                    return;
                                 }
                             }
                         }
 
                         InlineKeyboardButton rispostaSport = new InlineKeyboardButton();
                         rispostaSport.setText("Sport ⚽️");
-                        rispostaSport.setCallbackData("sportissimo");
+                        rispostaSport.setCallbackData("chiamataSport");
 
 
                         InlineKeyboardButton rispostaPolitica = new InlineKeyboardButton();
                         rispostaPolitica.setText("Politica 💰");
-                        rispostaPolitica.setCallbackData("politicissima");
+                        rispostaPolitica.setCallbackData("chiamataPolitica");
 
                         InlineKeyboardButton rispostaSpettacolo = new InlineKeyboardButton();
                         rispostaSpettacolo.setText("Spettacolo 🎬");
-                        rispostaSpettacolo.setCallbackData("spettacolissimo");
+                        rispostaSpettacolo.setCallbackData("chiamataSpettacolo");
 
                         InlineKeyboardButton rispostaEconomia = new InlineKeyboardButton();
                         rispostaEconomia.setText("Economia 💲");
-                        rispostaEconomia.setCallbackData("soldissimo");
+                        rispostaEconomia.setCallbackData("chiamataEconomia");
 
                         InlineKeyboardButton rispostaTech = new InlineKeyboardButton();
                         rispostaTech.setText("Tech 👨🏼‍💻");
-                        rispostaTech.setCallbackData("techissimo");
+                        rispostaTech.setCallbackData("chiamataTech");
 
                         ArrayList<InlineKeyboardButton> perInput = new ArrayList<>();
                         perInput.add(rispostaSport);
@@ -806,6 +822,7 @@ public class myBotDef extends TelegramLongPollingBot {
                         perInput.add(rispostaEconomia);
                         perInput.add(rispostaTech);
 
+                        //TODO cos'è sendphoto qua sotto??
                         SendPhoto nomeSendPhoto = SendPhoto.builder().chatId(String.valueOf(chat_id)).photo(new InputFile("https://www.theverge.com/2022/2/15/22935080/facebook-meta-news-feed-renaming-branding-political-content-misinformation")).build();
                         nomeSendPhoto.setReplyMarkup(creatoreRowsInLine(perInput));
                         execute(nomeSendPhoto);
@@ -815,23 +832,6 @@ public class myBotDef extends TelegramLongPollingBot {
                         throw new RuntimeException(e);
                     }
 
-                }
-
-
-
-                //METODO DI BACKUPPPPPPPPPPPP
-
-                if (message_text.equals("/fotoInnocente")) {
-                    var foto = SendPhoto.builder().chatId(String.valueOf(chat_id)).photo(new InputFile("https://static-ca-cdn.eporner.com/gallery/cl/RH/bmnjxXXRHcl/707023-hitomi-tanaka-nude.jpg")).build();
-                    var valutazioni = SendPoll.builder().chatId(String.valueOf(chat_id)).question(" valuta questa news! ").option("1/3 😇").option("4/6 😄").option("7/10 🤩 ").build();
-                    var randomico = SendDice.builder().chatId(String.valueOf(chat_id)).emoji("🎲").build();
-                    try {
-                        execute(foto);
-                        execute(valutazioni);
-                        execute(randomico);
-                    } catch (TelegramApiException e) {
-                        throw new RuntimeException(e);
-                    }
                 }
 
             }

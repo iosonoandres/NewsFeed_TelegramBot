@@ -2,11 +2,16 @@ package ZonaFeedConClassi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonStreamParser;
 import com.google.gson.reflect.TypeToken;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class gestoreGsonUtentone
 {

@@ -3,6 +3,9 @@ package ZonaFeedConClassi;
 import com.rometools.rome.feed.synd.SyndContent;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Notizia implements Comparable<Notizia>
 {
