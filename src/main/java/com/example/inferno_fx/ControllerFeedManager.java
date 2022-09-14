@@ -50,7 +50,7 @@ public class ControllerFeedManager implements Initializable{
 
 
     Image categorieBox = new Image(getClass().getResourceAsStream("categorie.png"), 20, 20, false, true);
-    Image folderImage = new Image(getClass().getResourceAsStream("folder.png"), 15, 15, false, true);
+    Image folderImage = new Image(getClass().getResourceAsStream("Folder.png"), 15, 15, false, true);
     Image urlImage = new Image(getClass().getResourceAsStream("url.png"), 14, 14, false, true);
     private TreeItem<String> rootItem;
 
@@ -113,7 +113,6 @@ public class ControllerFeedManager implements Initializable{
         floppyDisk.setOpacity(0.5);
         //
 
-        //codice di prova per inizializzare la context menu e riempirla id MenuItem
         this.rootItem = new TreeItem<>("Categorie",new ImageView(categorieBox));
         this.treeView = new TreeView<>(rootItem);
         rootItem.setExpanded(true);
