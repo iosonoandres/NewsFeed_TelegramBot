@@ -96,7 +96,8 @@ public class ControllerNotizieManager implements Initializable {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NotiziaSport.json non trovato");
-            throw new RuntimeException(e);
+            arraySport=new ArrayList<>();
+            //throw new RuntimeException(e);
         }
         //questo blocco try riempie la TreeItem itemPolitica
         try {
@@ -114,7 +115,7 @@ public class ControllerNotizieManager implements Initializable {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NotiziePolitica.json non trovato");
-            throw new RuntimeException(e);
+            arraySport=new ArrayList<>();
         }
         //questo blocco try riempie la TreeItem itemSpettacolo
         try {
@@ -132,7 +133,7 @@ public class ControllerNotizieManager implements Initializable {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NotizieSpettacolo.json non trovato");
-            throw new RuntimeException(e);
+            arraySport=new ArrayList<>();
         }
         //questo blocco try riempie la TreeItem itemTech
         try {
@@ -150,7 +151,7 @@ public class ControllerNotizieManager implements Initializable {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NotizieTech.json non trovato");
-            throw new RuntimeException(e);
+            arraySport=new ArrayList<>();
         }
         //questo blocco try riempie la TreeItem itemEconomia
         try {
@@ -168,7 +169,7 @@ public class ControllerNotizieManager implements Initializable {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File NotizieEconomia.json non trovato");
-            throw new RuntimeException(e);
+            arraySport=new ArrayList<>();
         }
 
 

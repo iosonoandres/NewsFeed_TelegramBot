@@ -104,7 +104,6 @@ public class ControllerEliminaUtente implements Initializable {
             scene.getStylesheets().add(css);
             stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
             stage.setResizable(false);
-            stage.show();
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent e) {
@@ -112,6 +111,7 @@ public class ControllerEliminaUtente implements Initializable {
                     System.exit(0);
                 }
             });
+            stage.show();
 
         } catch (IOException e) {
             System.out.println("Errore nel caricare UserManager.fxml");

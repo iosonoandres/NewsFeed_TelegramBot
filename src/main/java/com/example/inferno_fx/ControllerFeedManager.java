@@ -4,6 +4,7 @@ import com.example.inferno_fx.OperazioniJSON.Categoria;
 import com.example.inferno_fx.OperazioniJSON.MappaCategorie;
 import com.example.inferno_fx.OperazioniJSON.Utente;
 import com.example.inferno_fx.OperazioniJSON.gestoreGsonCategorie;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -21,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.io.FileNotFoundException;
@@ -269,6 +271,12 @@ public class ControllerFeedManager implements Initializable{
             scene.getStylesheets().add(css);
             stage.getIcons().add(new Image(this.getClass().getResource("variLogo/powder-blue-designify.png").toString()));
             stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent e) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
         } catch (IOException e) {
