@@ -13,7 +13,7 @@ public class Notizia implements Comparable<Notizia>
     private Date data;
     private String description; //SyndContent o String??
     private String author;
-    private String link; //TODO se il link tra due notizie è identico supponiamo che la notizia sia la stessa. usiamo il link come "id" della notizia
+    private String link;
 
     //la notizia contiene una mappa che associa un utente ad un feedback.
     private Feedback feedbacks;

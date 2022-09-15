@@ -23,7 +23,7 @@ public class FeedObj {
     private GestoreFeedback listaFeedback; //lista notizie già commentate
     private String nomeFile;
 
-    public FeedObj(String sourceURL, String nomeFile) //TODO secondo me dobbiamo passargli anche l'utente come variabile, feedObj non deve avere necessariamente avere un private Utente tho
+    public FeedObj(String sourceURL, String nomeFile)
     {
         try
         {
@@ -103,7 +103,7 @@ public class FeedObj {
 
             Gson gson = builder.create();
             FileWriter writer = new FileWriter(nomeFile);
-            String ilToJson = gson.toJson(newsList); //TODO vedere se pure qua serve la maletta del Type
+            String ilToJson = gson.toJson(newsList);
             writer.write(ilToJson);
             writer.close();
         } catch (IOException e) {
